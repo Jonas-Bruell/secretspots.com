@@ -9,17 +9,22 @@ Rails.application.routes.draw do
   get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
 
-  # Resources
+  # Defines the root path route ("/")
+  root "home#index"
+  # root "examples#index"
+
+  # Routes to simpel pages
+  get "profiles/index"
+  get "examples/index"
+  get "examples/show"
+
+  # Routes to CRUD pages
+  resources :profiles
+  resources :adventures
+  resources :secrets
+
+  # Member types
   devise_for :admins
   devise_for :members
   devise_for :users
-  resources :profiles
-
-  # Defines the root path route ("/")
-  # root "home#index"
-  root "examples#index"
-  get "profiles/index"
-
-  get "examples/index"
-  get "examples/show"
 end

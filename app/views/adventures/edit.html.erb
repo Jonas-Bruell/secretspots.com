@@ -1,0 +1,12 @@
+<% content_for :title, "Editing adventure" %>
+
+<h1>Editing adventure</h1>
+
+<%= render "form", adventure: @adventure %>
+
+<br>
+
+<div>
+  <%= link_to "Show this adventure", @adventure %> |
+  <%= link_to "Back to adventures", adventures_path %>
+</div>
