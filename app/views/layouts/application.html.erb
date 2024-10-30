@@ -23,6 +23,13 @@
 
     <%= render "home/header" %>
 
+    <!-- Devise authentication -->
+    <!-- https://www.monterail.com/blog/how-to-set-up-user-authentication-and-authorization-in-ruby-on-rails -->
+    <div>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+    </div>
+
     <div class="container">
       <%= yield %>
     </div>

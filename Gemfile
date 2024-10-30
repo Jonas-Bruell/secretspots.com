@@ -58,3 +58,4 @@ end
 
 gem "geocoder", "~> 1.8"
 gem "devise", "~> 4.9", ">= 4.9.4"
+gem "pundit", "~> 2.4"
