@@ -8,6 +8,4 @@ Layout/SpaceInsideArrayLiteralBrackets:
   Enabled: false
 
 Style/StringLiterals:
-  SupportedStyles:
-    - single_quotes
-    - double_quotes
+  Enabled: false
