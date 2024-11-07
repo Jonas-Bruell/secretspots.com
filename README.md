@@ -41,7 +41,8 @@ Things you may want to cover:
 
 * How to run the test suite
     
-    https://guides.rubyonrails.org/testing.html
+    * https://guides.rubyonrails.org/testing.html
+    * make sure to prepare the database with ```rails db:test:prepare```
 
 * Services (job queues, cache servers, search engines, etc.)
 

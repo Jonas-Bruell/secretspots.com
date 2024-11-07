@@ -19,8 +19,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_30_174705) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_admins_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+    t.index ["email"], name: "index_admins_on_email", unique: false #true
+    t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: false #true
   end
 
   create_table "adventures", force: :cascade do |t|
@@ -40,8 +40,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_30_174705) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_members_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true
+    t.index ["email"], name: "index_members_on_email", unique: false #true
+    t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: false #true
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -67,7 +67,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_30_174705) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: false #true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: false #true
   end
 end
