@@ -17,7 +17,7 @@ class SecretsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create secret" do
     assert_difference("Secret.count") do
-      post secrets_url, params: { secret: { beschrijving: @secret.beschrijving, likes: @secret.likes, naam: @secret.naam } }
+      post secrets_url, params: { secret: { body: @secret.body, name: @secret.name, user_id: @secret.user_id } }
     end
 
     assert_redirected_to secret_url(Secret.last)
@@ -34,7 +34,7 @@ class SecretsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update secret" do
-    patch secret_url(@secret), params: { secret: { beschrijving: @secret.beschrijving, likes: @secret.likes, naam: @secret.naam } }
+    patch secret_url(@secret), params: { secret: { body: @secret.body, name: @secret.name, user_id: @secret.user_id } }
     assert_redirected_to secret_url(@secret)
   end
 

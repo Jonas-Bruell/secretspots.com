@@ -14,10 +14,9 @@ class AdventuresTest < ApplicationSystemTestCase
     visit adventures_url
     click_on "New adventure"
 
-    fill_in "Amountofsecrets", with: @adventure.amountOfSecrets
-    fill_in "Beschrijving", with: @adventure.beschrijving
-    fill_in "Likes", with: @adventure.likes
-    fill_in "Naam", with: @adventure.naam
+    fill_in "Body", with: @adventure.body
+    fill_in "Name", with: @adventure.name
+    fill_in "User", with: @adventure.user_id
     click_on "Create Adventure"
 
     assert_text "Adventure was successfully created"
@@ -28,10 +27,9 @@ class AdventuresTest < ApplicationSystemTestCase
     visit adventure_url(@adventure)
     click_on "Edit this adventure", match: :first
 
-    fill_in "Amountofsecrets", with: @adventure.amountOfSecrets
-    fill_in "Beschrijving", with: @adventure.beschrijving
-    fill_in "Likes", with: @adventure.likes
-    fill_in "Naam", with: @adventure.naam
+    fill_in "Body", with: @adventure.body
+    fill_in "Name", with: @adventure.name
+    fill_in "User", with: @adventure.user_id
     click_on "Update Adventure"
 
     assert_text "Adventure was successfully updated"

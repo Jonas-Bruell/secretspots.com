@@ -65,6 +65,6 @@ class AdventuresController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def adventure_params
-      params.require(:adventure).permit(:naam, :beschrijving, :likes, :amountOfSecrets)
+      params.require(:adventure).permit(:user_id, :name, :body)
     end
 end

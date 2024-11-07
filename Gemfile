@@ -56,6 +56,7 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem "geocoder", "~> 1.8"
-gem "devise", "~> 4.9", ">= 4.9.4"
-gem "pundit", "~> 2.4"
+## custom gems
+
+# https://blog.appsignal.com/2023/07/12/an-introduction-to-devise-for-ruby-on-rails.html
+gem "devise", "~> 4.9", ">= 4.9.3"

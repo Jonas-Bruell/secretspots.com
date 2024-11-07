@@ -65,6 +65,6 @@ class SecretsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def secret_params
-      params.require(:secret).permit(:naam, :beschrijving, :likes)
+      params.require(:secret).permit(:user_id, :name, :body)
     end
 end

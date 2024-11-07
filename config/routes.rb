@@ -11,20 +11,11 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "home#index"
-  # root "examples#index"
 
-  # Routes to simpel pages
-  get "profiles/index"
-  get "examples/index"
-  get "examples/show"
+  # Devise
+  devise_for :users
 
-  # Routes to CRUD pages
-  resources :profiles
+  # CRUD
   resources :adventures
   resources :secrets
-
-  # Member types
-  devise_for :admins
-  devise_for :members
-  devise_for :users
 end

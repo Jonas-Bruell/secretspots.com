@@ -17,6 +17,9 @@
         * The error "postCreateCommand failed with exit code 127" seems not to impact the creation of the container, I have not found a solution yet for this problem.
         * When the containerisation process has finished, Docker automatically boots the container, this also takes a while.
 
+1. Configure Ruby
+    * Run the command ```bundle install```
+
 1. Start the Rails server
     * Open a new bash-terminal in VS-Code ("vscode->/workspaces/secretspots $")
     * Start the server with the ```rails s```-command.
