@@ -1,0 +1,22 @@
+current directory: /workspaces/secretspots/vendor/bundle/ruby/3.3.0/gems/bootsnap-1.18.4/ext/bootsnap
+/home/vscode/.rbenv/versions/3.3.5/bin/ruby extconf.rb
+checking for fdatasync() in unistd.h... yes
+checking for whether -D_GNU_SOURCE is accepted as CPPFLAGS... yes
+checking for whether -O3 is accepted as CFLAGS... yes
+checking for whether -std=c99 is accepted as CFLAGS... yes
+creating Makefile
+
+current directory: /workspaces/secretspots/vendor/bundle/ruby/3.3.0/gems/bootsnap-1.18.4/ext/bootsnap
+make DESTDIR\= sitearchdir\=./.gem.20241107-93251-olefrt sitelibdir\=./.gem.20241107-93251-olefrt clean
+
+current directory: /workspaces/secretspots/vendor/bundle/ruby/3.3.0/gems/bootsnap-1.18.4/ext/bootsnap
+make DESTDIR\= sitearchdir\=./.gem.20241107-93251-olefrt sitelibdir\=./.gem.20241107-93251-olefrt
+compiling bootsnap.c
+linking shared-object bootsnap/bootsnap.so
+
+current directory: /workspaces/secretspots/vendor/bundle/ruby/3.3.0/gems/bootsnap-1.18.4/ext/bootsnap
+make DESTDIR\= sitearchdir\=./.gem.20241107-93251-olefrt sitelibdir\=./.gem.20241107-93251-olefrt install
+/usr/bin/install -c -m 0755 bootsnap.so ./.gem.20241107-93251-olefrt/bootsnap
+
+current directory: /workspaces/secretspots/vendor/bundle/ruby/3.3.0/gems/bootsnap-1.18.4/ext/bootsnap
+make DESTDIR\= sitearchdir\=./.gem.20241107-93251-olefrt sitelibdir\=./.gem.20241107-93251-olefrt clean

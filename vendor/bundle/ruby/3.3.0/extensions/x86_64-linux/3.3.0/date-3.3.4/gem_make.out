@@ -1,0 +1,24 @@
+current directory: /workspaces/secretspots/vendor/bundle/ruby/3.3.0/gems/date-3.3.4/ext/date
+/home/vscode/.rbenv/versions/3.3.5/bin/ruby extconf.rb
+checking for rb_category_warn()... yes
+checking for timezone in time.h with  -Werror... yes
+checking for altzone in time.h with  -Werror... no
+creating Makefile
+
+current directory: /workspaces/secretspots/vendor/bundle/ruby/3.3.0/gems/date-3.3.4/ext/date
+make DESTDIR\= sitearchdir\=./.gem.20241107-93251-jarjik sitelibdir\=./.gem.20241107-93251-jarjik clean
+
+current directory: /workspaces/secretspots/vendor/bundle/ruby/3.3.0/gems/date-3.3.4/ext/date
+make DESTDIR\= sitearchdir\=./.gem.20241107-93251-jarjik sitelibdir\=./.gem.20241107-93251-jarjik
+compiling date_core.c
+compiling date_parse.c
+compiling date_strftime.c
+compiling date_strptime.c
+linking shared-object date_core.so
+
+current directory: /workspaces/secretspots/vendor/bundle/ruby/3.3.0/gems/date-3.3.4/ext/date
+make DESTDIR\= sitearchdir\=./.gem.20241107-93251-jarjik sitelibdir\=./.gem.20241107-93251-jarjik install
+/usr/bin/install -c -m 0755 date_core.so ./.gem.20241107-93251-jarjik
+
+current directory: /workspaces/secretspots/vendor/bundle/ruby/3.3.0/gems/date-3.3.4/ext/date
+make DESTDIR\= sitearchdir\=./.gem.20241107-93251-jarjik sitelibdir\=./.gem.20241107-93251-jarjik clean

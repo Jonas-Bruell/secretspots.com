@@ -1,0 +1,18 @@
+current directory: /workspaces/secretspots/vendor/bundle/ruby/3.3.0/gems/stringio-3.1.1/ext/stringio
+/home/vscode/.rbenv/versions/3.3.5/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /workspaces/secretspots/vendor/bundle/ruby/3.3.0/gems/stringio-3.1.1/ext/stringio
+make DESTDIR\= sitearchdir\=./.gem.20241107-93251-5cxbhp sitelibdir\=./.gem.20241107-93251-5cxbhp clean
+
+current directory: /workspaces/secretspots/vendor/bundle/ruby/3.3.0/gems/stringio-3.1.1/ext/stringio
+make DESTDIR\= sitearchdir\=./.gem.20241107-93251-5cxbhp sitelibdir\=./.gem.20241107-93251-5cxbhp
+compiling stringio.c
+linking shared-object stringio.so
+
+current directory: /workspaces/secretspots/vendor/bundle/ruby/3.3.0/gems/stringio-3.1.1/ext/stringio
+make DESTDIR\= sitearchdir\=./.gem.20241107-93251-5cxbhp sitelibdir\=./.gem.20241107-93251-5cxbhp install
+/usr/bin/install -c -m 0755 stringio.so ./.gem.20241107-93251-5cxbhp
+
+current directory: /workspaces/secretspots/vendor/bundle/ruby/3.3.0/gems/stringio-3.1.1/ext/stringio
+make DESTDIR\= sitearchdir\=./.gem.20241107-93251-5cxbhp sitelibdir\=./.gem.20241107-93251-5cxbhp clean
