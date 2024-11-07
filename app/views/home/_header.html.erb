@@ -16,6 +16,8 @@
           <%= link_to "Adventures", adventures_path, class:"nav-link active" %>
         </li>
 
+        
+
         <!-- Item
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#">Home</a>
@@ -49,6 +51,15 @@
         -->
 
       </ul>
+      
+      <div class="d-flex navbar-text">
+        <% if user_signed_in? %> 
+          <div> Welcome <%= current_user.email %> </div> 
+          <%= button_to "Sign out", destroy_user_session_path, method: :delete %> 
+        <% else %>
+          <%= button_to "Sign in", new_user_session_path %> 
+        <% end %>
+      </div>
 
       <!-- Searchbar
       <form class="d-flex" role="search">
