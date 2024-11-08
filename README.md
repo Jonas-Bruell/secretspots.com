@@ -18,12 +18,14 @@
         * When the containerisation process has finished, Docker automatically boots the container, this also takes a while.
 
 1. Configure Ruby
+    * Open a new bash-terminal in VS-Code ("vscode->/workspaces/secretspots $")
     * Run the command ```bundle install```
+    * If any error occure because of previous installations, try the command again untill you get the "Bundle complete!" message (green)
 
 1. Start the Rails server
-    * Open a new bash-terminal in VS-Code ("vscode->/workspaces/secretspots $")
-    * Start the server with the ```rails s```-command.
+    * In the same bash-terminal, start the server with the ```rails s```-command.
     * The devellopment application should now be running on localhost:3000
+    * Keep this terminal open as long as you want to use the server. Use ````Ctrl-C``` in the terminal to stop the server.
 
 ## Project
 
