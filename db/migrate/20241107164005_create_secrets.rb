@@ -3,7 +3,7 @@ class CreateSecrets < ActiveRecord::Migration[7.2]
     create_table :secrets do |t|
       t.references :user, null: false, foreign_key: true
       t.string :name
-      t.text :Body
+      t.text :body
 
       t.timestamps
     end
