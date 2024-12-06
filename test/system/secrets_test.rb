@@ -13,7 +13,7 @@ class SecretsTest < ApplicationSystemTestCase
   test "should create secret" do
     visit secrets_url
     click_on "New secret"
-
+    save_and_open_page
     fill_in "Body", with: @secret.body
     fill_in "Name", with: @secret.name
     fill_in "User", with: @secret.user_id

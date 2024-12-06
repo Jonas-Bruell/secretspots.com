@@ -1,0 +1,11 @@
+#TopBorder{
+    background-color: darkred;
+    height:30px;
+}
+#SignIn_OutNotice{
+    background-color: rgb(159, 236, 159);
+    width: 100%;
+    text-align: center;
+    padding:5px;
+    border: 3px solid rgb(48, 206, 48);
+}
