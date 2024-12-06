@@ -11,6 +11,7 @@ class SecretsTest < ApplicationSystemTestCase
   end
 
   test "should create secret" do
+    render_views
     visit secrets_url
     click_on "New secret"
 
