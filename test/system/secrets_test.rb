@@ -14,7 +14,7 @@ class SecretsTest < ApplicationSystemTestCase
     visit secrets_url
     click_on "New secret"
 
-    fill_in "Body:", with: @secret.body
+    fill_in "Body", with: @secret.body
     fill_in "Name", with: @secret.name
     fill_in "User", with: @secret.user_id
     click_on "Create Secret"
@@ -27,7 +27,7 @@ class SecretsTest < ApplicationSystemTestCase
     visit secret_url(@secret)
     click_on "Edit this secret", match: :first
 
-    fill_in "Body:", with: @secret.body
+    fill_in "Body", with: @secret.body
     fill_in "Name", with: @secret.name
     fill_in "User", with: @secret.user_id
     click_on "Update Secret"
