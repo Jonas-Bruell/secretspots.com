@@ -3,7 +3,7 @@ class AdventuresController < ApplicationController
 
   # GET /adventures or /adventures.json
   def index
-    @adventures = Adventure.all
+    @adventures = Adventure.all    # we get all the adventure data entries from the database -- @ so the variable is shared between controller and view
   end
 
   # GET /adventures/1 or /adventures/1.json
