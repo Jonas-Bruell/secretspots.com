@@ -14,8 +14,8 @@ class SecretsTest < ApplicationSystemTestCase
     visit secrets_url
     click_on "New secret"
 
-    fill_in "Body", with: @secret.body
-    fill_in save_and_open_page "Name", with: @secret.name
+    fill_in save_and_open_page "Body", with: @secret.body
+    fill_in "Name", with: @secret.name
     fill_in "User", with: @secret.user_id
     click_on "Create Secret"
 
