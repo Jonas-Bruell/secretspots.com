@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Secret Spots</title>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload" %>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -16,93 +18,29 @@
             margin-top: 20px;
         }
         #map {
-            margin-top: 40px;
+            margin: 40px auto;
             width: 600px;
             height: 400px;
-            background-color: #e0e0e0;
             border: 2px solid #b0b0b0;
-        }
-        #search-box {
-            margin-top: 20px;
-            padding: 10px;
-            width: 400px;
-            font-size: 1em;
-            border: 1px solid #b0b0b0;
-            border-radius: 5px;
         }
     </style>
 </head>
 <body>
     <h1>SECRET SPOTS</h1>
-    <input id="search-box" type="text" placeholder="Search for a location..." />
     <div id="map"></div>
 
-   
     <script>
-        async function loadGoogleMapsApi() {
-           
-            const response = await fetch('/config'); 
-            const data = await response.json();
-            const apiKey = data.API_KEY;
-
-            
-            const script = document.createElement('script');
-            script.src = `https://maps.googleapis.com/maps/api/js?key=${GOOGLE_MAPS_API_KEY}&libraries=places&callback=initMap`;
-            script.async = true;
-            script.defer = true;
-            document.head.appendChild(script);
-        }
-
+        // Initialize Google Map
         function initMap() {
-            
-            const map = new google.maps.Map(document.getElementById('map'), {
-                center: { lat: 48.8566, lng: 2.3522 }, 
-                zoom: 13,
-            });
-
-           
-            const input = document.getElementById('search-box');
-            const searchBox = new google.maps.places.SearchBox(input);
-
-           
-            map.addListener('bounds_changed', () => {
-                searchBox.setBounds(map.getBounds());
-            });
-
-            let markers = [];
-            searchBox.addListener('places_changed', () => {
-                const places = searchBox.getPlaces();
-
-                if (places.length === 0) return;
-
-                
-                markers.forEach(marker => marker.setMap(null));
-                markers = [];
-
-                const bounds = new google.maps.LatLngBounds();
-                places.forEach(place => {
-                    if (!place.geometry || !place.geometry.location) return;
-
-                    
-                    const marker = new google.maps.Marker({
-                        map,
-                        position: place.geometry.location,
-                        title: place.name,
-                    });
-                    markers.push(marker);
-
-                    if (place.geometry.viewport) {
-                        bounds.union(place.geometry.viewport);
-                    } else {
-                        bounds.extend(place.geometry.location);
-                    }
-                });
-                map.fitBounds(bounds);
+            const map = new google.maps.Map(document.getElementById("map"), {
+                center: { lat: -34.397, lng: 150.644 },
+                zoom: 8,
             });
         }
-
-       
-        loadGoogleMapsApi();
     </script>
+    <script async
+    src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_API_KEY'] %>&callback=initMap">
+</script>
+
 </body>
 </html>
