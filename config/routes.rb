@@ -13,7 +13,10 @@ Rails.application.routes.draw do
   root "home#index"
 
   # Devise :: https://www.digitalocean.com/community/tutorials/how-to-set-up-user-authentication-with-devise-in-a-rails-7-application
-  devise_for :users
+  # https://dev.to/ahmadraza/google-login-in-rails-7-with-devise-2gpo#step-3-configure-controller#step-4-add-routes
+  devise_for :users, controllers: {
+      omniauth_callbacks: 'users/omniauth_callbacks'
+    }
 
   # CRUD
   resources :adventures
