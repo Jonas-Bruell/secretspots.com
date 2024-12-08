@@ -1,4 +1,5 @@
 class AdventuresController < ApplicationController
+  before_action :authenticate_user!, exept: [:index, :show]
   before_action :set_adventure, only: %i[ show edit update destroy ]
 
   # GET /adventures or /adventures.json
