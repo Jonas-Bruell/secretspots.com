@@ -34,7 +34,7 @@ class SecretsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update secret" do
-    patch secret_url(@secret), params: { secret: { body: @secret.body, name: @secret.name } }
+    patch secret_url(@secret), params: { secret: { body: @secret.body, name: @secret.name, user_id: @secret.user_id } }
     assert_redirected_to secret_url(@secret)
   end
 
