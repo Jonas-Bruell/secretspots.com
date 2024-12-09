@@ -1,16 +1,23 @@
 <p style="color: green"><%= notice %></p>
 
-<% content_for :title, "Adventures" %>   /// we have access to this bcs of the @adventures definition in the other index method
+<% content_for :title, "Adventures" %>
 
-<h1>Adventures</h1>
+<div class="text-center">
+  <h1 class="text-primary">Adventures</h1>
+</div>
 
-<div id="adventures">
+<div id="adventures" class="mt-4">
   <% @adventures.each do |adventure| %>
-    <%= render adventure %>
-    <p>
-      <%= link_to "Show this adventure", adventure %>
-    </p>
+    <div class="adventure-item mb-3 p-3 border rounded bg-light">
+      <%= render adventure %>
+      <p>
+        <%= link_to "Show this adventure", adventure, class: "btn btn-outline-primary" %>
+      </p>
+    </div>
   <% end %>
 </div>
 
-<%= link_to "New adventure", new_adventure_path %>
+<div style="display: flex; justify-content: center; margin-top: 50px;">
+  <%= link_to "New adventure", new_adventure_path, class: "btn btn-light-blue" %>
+</div>
+

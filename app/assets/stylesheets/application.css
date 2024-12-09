@@ -15,3 +15,54 @@
  */
 
  @import "bootstrap";
+
+
+ .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-light-blue {
+    background-color: #87CEFA; 
+    border: 1px solid #87CEFA;
+    color: white;
+  }
+  
+  .btn-light-blue:hover {
+    background-color: #4682B4; 
+  }
+  
+  .btn-outline-primary {
+    background-color: transparent;
+    color: #007bff;
+    border: 1px solid #007bff;
+  }
+  
+  .btn-outline-primary:hover {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .adventure-item, .secret-item {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+  
+  .text-primary {
+    color: #007bff;
+  }
+  

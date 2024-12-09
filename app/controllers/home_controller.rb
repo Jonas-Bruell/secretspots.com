@@ -1,9 +1,6 @@
 class HomeController < ApplicationController
   def index
-    Rails.logger.debug "GOOGLE_MAPS_API_KEY: #{ENV['GOOGLE_MAPS_API_KEY']}"
-  end
-
-  def google_maps_key
-    render json: { API_KEY: ENV['GOOGLE_MAPS_API_KEY'] }
+    @secrets = Secret.all
+    Rails.logger.debug "DEBUG: in HOME secrets in the database : #{@secrets.inspect}"
   end
 end
