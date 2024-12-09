@@ -33,20 +33,9 @@ class SecretsController < ApplicationController
 # POST /secrets or /secrets.json
 
 def create
-  # Generate a random user
-  random_email = "user_#{SecureRandom.hex(5)}@example.com" # Generate a random email
-  random_password = SecureRandom.hex(8) # Generate a random password
-
-  # Create the user
-  user = User.create!(
-    email: random_email,
-    password: random_password,
-    password_confirmation: random_password
-  )
-
   # Initialize a new secret
   @secret = Secret.new(secret_params)
-  @secret.user = user # Associate the secret with the new user
+  @secret.user = current_user # Associate the secret with the new user
 
   # Save the secret
   respond_to do |format|
