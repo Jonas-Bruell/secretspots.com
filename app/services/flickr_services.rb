@@ -95,8 +95,6 @@ end
 
 def search_valid_pics_and_data(flickr, tags, lat, lon, radius = 5, per_page = 5)
   photos_response = flickr.search_photos(tags, lat, lon, radius)
-  puts photos_response
-  puts "-" * 100
   if photos_response && photos_response["photos"] && photos_response["photos"]["photo"].any?
     valid_photos = []
     photos_response["photos"]["photo"].each do |photo|
@@ -132,14 +130,8 @@ def search_valid_pics_and_data(flickr, tags, lat, lon, radius = 5, per_page = 5)
       description = photo_data[:description]
 
       photo_url = flickr.get_image_url(photo_id)
-      puts photo_url
-       puts "-" * 100
       comments_response = flickr.get_photo_comments(photo_id)
-      puts comments_response
-      puts "-" * 100
       photo_details = flickr.get_photo_details(photo_id)
-      puts photo_details
-      puts "-" * 100
       post_url = photo_details && photo_details["photo"]["urls"]["url"] ? photo_details["photo"]["urls"]["url"].find { |url| url["_content"].include?("http") }["_content"] : "No URL found"
 
       comments = comments_response && comments_response["comments"] && comments_response["comments"]["comment"] ? comments_response["comments"]["comment"].map { |comment|
