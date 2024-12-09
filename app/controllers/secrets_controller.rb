@@ -28,6 +28,8 @@ class SecretsController < ApplicationController
     @secret = Secret.new(secret_params)
     if user_signed_in? then
       @secret.user_id = current_user.id
+    else
+      @secret.user_id = 1
     end
 
     respond_to do |format|
