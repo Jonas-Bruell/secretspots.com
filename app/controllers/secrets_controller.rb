@@ -9,6 +9,9 @@ class SecretsController < ApplicationController
 
   # GET /secrets/1 or /secrets/1.json
   def show
+    @permission = if user_signed_in? && @secret.user_id == current_user.id then
+                    true else false
+    end
   end
 
   # GET /secrets/new
@@ -23,7 +26,7 @@ class SecretsController < ApplicationController
   # POST /secrets or /secrets.json
   def create
     @secret = Secret.new(secret_params)
-
+    @secret.user_id = current_user.id
     respond_to do |format|
       if @secret.save
         format.html { redirect_to @secret, notice: "Secret was successfully created." }
@@ -66,6 +69,6 @@ class SecretsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def secret_params
-      params.require(:secret).permit(:user_id, :name, :body)
+      params.require(:secret).permit(:name, :body)
     end
 end
