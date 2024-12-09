@@ -26,12 +26,7 @@ class SecretsController < ApplicationController
   # POST /secrets or /secrets.json
   def create
     @secret = Secret.new(secret_params)
-    if user_signed_in? then
-      @secret.user_id = current_user.id
-    else
-      @secret.user_id = 1
-    end
-
+    @secret.user_id = current_user.id
     respond_to do |format|
       if @secret.save
         format.html { redirect_to @secret, notice: "Secret was successfully created." }
