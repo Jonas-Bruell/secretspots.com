@@ -1,6 +1,13 @@
 class HomeController < ApplicationController
   def index
-    @secrets = Secret.all
-    Rails.logger.debug "DEBUG: in HOME secrets in the database : #{@secrets.inspect}"
+    puts user_signed_in?
+    if user_signed_in?
+      @secrets = Secret.all
+      render
+      puts "here"
+    else
+      redirect_to "/users/sign_in"
+      puts 'not here'
+    end
   end
 end

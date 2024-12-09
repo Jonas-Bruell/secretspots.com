@@ -65,3 +65,11 @@ end
 
 # https://blog.appsignal.com/2023/07/12/an-introduction-to-devise-for-ruby-on-rails.html
 gem "devise", "~> 4.9", ">= 4.9.3"
+
+# Authentication via 3rd party services
+gem 'omniauth'
+gem "omniauth-rails_csrf_protection"
+# https://dev.to/ahmadraza/google-login-in-rails-7-with-devise-2gpo#step-1-add-required-gems
+gem 'omniauth-google-oauth2'
+# https://medium.com/@emdadulislam162/to-set-up-omniauth-with-github-in-a-ruby-on-rails-application-follow-these-steps-876c20c2094c#1584
+gem 'omniauth-github'
