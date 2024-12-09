@@ -17,7 +17,7 @@ class SecretsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create secret" do
     assert_difference("Secret.count") do
-      post secrets_url, params: { secret: { body: @secret.body, name: @secret.name, user_id: @secret.user_id } }
+      post secrets_url, params: { secret: { body: @secret.body, name: @secret.name } }
     end
 
     assert_redirected_to secret_url(Secret.last)
