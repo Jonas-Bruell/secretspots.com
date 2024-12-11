@@ -32,15 +32,12 @@
 
   <body>
     <div id="TopBorder"></div>
-
-    <% if user_signed_in? %>
       <%= render "home/header" %>
-    <% end %>
     <!-- Devise authentication -->
     <!-- https://www.monterail.com/blog/how-to-set-up-user-authentication-and-authorization-in-ruby-on-rails -->
     <% if notice %>
       <p id="SignIn_OutNotice"><%= notice %></p>
-    <% end %>  
+    <% end %> 
     <div class="container">
       <%= yield %>
     </div>
