@@ -28,4 +28,8 @@
 #       enabled: "ON"
 
 en:
-  hello: "Hello world"
+  hello_world: "Hello, world!"
+  user: "User"
+  name: "Name"
+  body: "Discription"
+  show: "Show this secret"

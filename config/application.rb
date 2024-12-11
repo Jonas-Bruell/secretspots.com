@@ -23,5 +23,16 @@ module Secretspots
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    # https://guides.rubyonrails.org/i18n.html
+    #
+    # Where the I18n library should search for translation files
+    I18n.load_path += Dir[Rails.root.join("lib", "locale", "*.{rb,yml}")]
+
+    # Permitted locales available for the application
+    I18n.available_locales = [:en, :nl]
+
+    # Set default locale to something other than :en
+    I18n.default_locale = :en
   end
 end

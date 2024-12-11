@@ -28,4 +28,8 @@
 #       enabled: "ON"
 
 en:
-  hello: "Hallo wereld"
+  hello_world: "Hallo, wereld!"
+  user: "Gebruiker"
+  name: "Naam"
+  body: "Beschrijving"
+  show: "Toon dit pareltje"
