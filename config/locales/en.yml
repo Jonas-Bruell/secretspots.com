@@ -28,4 +28,13 @@
 #       enabled: "ON"
 
 en:
-  hello: "Hello world"
+  hello_world: "Hello, world!"
+  secrets:
+    List:
+      new: "Make new secret"
+      show: "Show this secret"
+    secret:
+      user: "User"
+      name: "Name"
+      body: "Discription"
+

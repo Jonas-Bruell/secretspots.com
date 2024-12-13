@@ -13,3 +13,8 @@
  *= require_tree .
  *= require_self
  */
+
+.secret-pictures{
+  width: auto;
+  height: 300px;
+}
