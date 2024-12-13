@@ -32,7 +32,7 @@ module Secretspots
     # Permitted locales available for the application
     I18n.available_locales = [:en, :nl]
 
-    # Set default locale to something other than :en
+    # Set default locale to ENGLISH :en
     I18n.default_locale = :en
   end
 end

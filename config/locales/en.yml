@@ -29,7 +29,12 @@
 
 en:
   hello_world: "Hello, world!"
-  user: "User"
-  name: "Name"
-  body: "Discription"
-  show: "Show this secret"
+  secrets:
+    List:
+      new: "Make new secret"
+      show: "Show this secret"
+    secret:
+      user: "User"
+      name: "Name"
+      body: "Discription"
+

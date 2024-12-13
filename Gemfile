@@ -58,6 +58,10 @@ end
 
 ## custom gems
 
+# Multiple language support via i18n
+gem "rails-i18n"
+
+# User authentication via devise
 # https://blog.appsignal.com/2023/07/12/an-introduction-to-devise-for-ruby-on-rails.html
 gem "devise", "~> 4.9", ">= 4.9.3"
 

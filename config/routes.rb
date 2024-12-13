@@ -15,9 +15,8 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
-  get "/:locale" => "home#index"
-
-  scope "(:locale)", locale: /en|nl/ do
+  # puts locale in the URL
+  scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
     # Defines the root path route ("/")
     root "home#index"
 
