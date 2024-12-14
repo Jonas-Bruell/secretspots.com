@@ -8,14 +8,17 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
+        <!-- Secrets -->
         <li class="nav-item">
           <%= link_to t('global.secrets'), secrets_path, class:"nav-link active" %>
         </li>
 
+        <!-- Adventures -->
         <li class="nav-item">
           <%= link_to t('global.adventures'), adventures_path, class:"nav-link active" %>
         </li>
 
+        <!-- Choose language -->
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             <%= t('.language') %>
@@ -26,8 +29,6 @@
             <li><a class="dropdown-item" href=<%= root_path(locale: :nl) %>>Nederlands</a></li>
           </ul>
         </li>
-
-        
 
         <!-- Item
         <li class="nav-item">
@@ -62,7 +63,13 @@
         -->
 
       </ul>
-      
+
+      <!-- Searchbar -->
+      <form class="d-flex" role="search" action="/home/search"%>
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+
       <div class="d-flex navbar-text">
         <% if user_signed_in? %> 
           <div> Welcome <%= current_user.email %> </div> 
@@ -73,13 +80,6 @@
           <%= button_to "Log in", new_user_registration_path %>
         <% end %>
       </div>
-
-      <!-- Searchbar
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
-      -->
 
     </div>
   </div>
