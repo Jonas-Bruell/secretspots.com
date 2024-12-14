@@ -3,8 +3,8 @@
 <%= render @adventure %>
 
 <div>
-  <%= link_to "Edit this adventure", edit_adventure_path(@adventure) %> |
-  <%= link_to "Back to adventures", adventures_path %>
+  <%= link_to t('adventures.edit-link'), edit_adventure_path(@adventure) %> |
+  <%= link_to t('adventures.back-link'), adventures_path %>
 
-  <%= button_to "Destroy this adventure", @adventure, method: :delete %>
+  <%= button_to t('adventures.destroy-link'), @adventure, method: :delete %>
 </div>

@@ -9,16 +9,16 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
         <li class="nav-item">
-          <%= link_to "Secrets", secrets_path, class:"nav-link active" %>
+          <%= link_to t('global.secrets'), secrets_path, class:"nav-link active" %>
         </li>
 
         <li class="nav-item">
-          <%= link_to "Adventures", adventures_path, class:"nav-link active" %>
+          <%= link_to t('global.adventures'), adventures_path, class:"nav-link active" %>
         </li>
 
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Language
+            <%= t('.language') %>
           </a>
           <ul class="dropdown-menu">
             <!-- https://www.youtube.com/watch?v=4m64FHUrEhg -->

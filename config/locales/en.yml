@@ -29,12 +29,54 @@
 
 en:
   hello_world: "Hello, world!"
-  secrets:
-    List:
-      new: "Make new secret"
-      show: "Show this secret"
-    secret:
-      user: "User"
-      name: "Name"
-      body: "Discription"
 
+  global:
+    user: "User:"
+    name: "Name:"
+    body: "Discription:"
+    secret: "Secret"
+    secrets: "Secrets"
+    adventure: "Adventure"
+    adventures: "Adventures"
+
+  home:
+    header:
+      language: "Language"
+
+  secrets:
+    back-link: "Back to secrets"
+    destroy-link: "Destroy this secret"
+    edit-link: "Edit this secret"
+    show-link: "Show this secret"
+    new-link: "New secret"
+    form:
+      messages:
+        errors:
+          one: "One error prohibited this secret from being saved:"
+          other: "%{count} errors prohibited this secret from being saved:"
+      submit: "Submit"
+    edit: 
+      title: "Edit"
+      edit: "Editing secret"
+    new:
+      title: "New"
+      new: "New secret"
+
+  adventures:
+    back-link: "Back to adventures"
+    destroy-link: "Destroy this adventure"
+    edit-link: "Edit this adventure"
+    show-link: "Show this adventure"
+    new-link: "New adventure"
+    form:
+      messages:
+        errors:
+          one: "One error prohibited this adventure from being saved:"
+          other: "%{count} errors prohibited this adventure from being saved:"
+      submit: "Add Adventure"
+    edit: 
+      title: "Edit"
+      edit: "Editing Adventure"
+    new: 
+      title: "New"
+      new: "New adventure"
