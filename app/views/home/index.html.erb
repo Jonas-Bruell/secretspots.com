@@ -24,16 +24,53 @@
             border: 2px solid #b0b0b0;
         }
         #secrets-list {
-            margin-top: 20px;
-            font-size: 1.2em;
-            color: #333;
+            margin: 40px auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .secret-box {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 15px;
+            width: 300px;
+            text-align: center;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
+            background-color: white;
+            transition: transform 0.2s;
+        }
+        .secret-box:hover {
+            transform: scale(1.05);
+            box-shadow: 4px 4px 20px rgba(0,0,0,0.2);
+        }
+        .secret-box h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #007bff;
+        }
+        .secret-box p {
+            margin-bottom: 15px;
+            font-size: 14px;
+            color: #555;
         }
     </style>
 </head>
 <body>
     <h1>Secret Spots</h1>
     <div id="map"></div>
-    <div id="secrets-list"></div>
+
+    <!-- Secrets Overview Section -->
+    <div id="secrets-list">
+        <% @secrets.each do |secret| %>
+            <div class="secret-box" onclick="window.location.href='<%= secret_path(secret) %>'">
+                <h2><%= secret.name %></h2>
+                <p><%= truncate(secret.description, length: 100) %></p>
+                <p><strong>Created by:</strong> <%= User.find(secret.user_id).email %></p>
+            </div>
+        <% end %>
+    </div>
 
     <script>
         let map;
@@ -59,7 +96,6 @@
             });
 
             fetchAndUpdateMarkers();
-
             setInterval(fetchAndUpdateMarkers, 5000);
         }
 
@@ -76,7 +112,7 @@
                     markers = [];
 
                     const secretsList = document.getElementById("secrets-list");
-                    secretsList.innerHTML = "Secrets within the zone:";
+                    secretsList.innerHTML = ""; // Clear the existing list
 
                     data.forEach(secret => {
                         const secretPosition = {
@@ -110,11 +146,18 @@
 
                         markers.push(marker);
 
-                        if (distance <= circle.getRadius()) {
-                            const secretDiv = document.createElement("div");
-                            secretDiv.textContent = secret.name;
-                            secretsList.appendChild(secretDiv);
-                        }
+                        // Add secret to the secrets list
+                        const secretBox = document.createElement("div");
+                        secretBox.className = "secret-box";
+                        secretBox.innerHTML = `
+                            <h2>${secret.name}</h2>
+                            <p>${secret.description.length > 100 ? secret.description.slice(0, 100) + '...' : secret.description}</p>
+                            <p><strong>Created by:</strong> ${secret.user_email}</p>
+                        `;
+                        secretBox.onclick = () => {
+                            window.location.href = `/secrets/${secret.id}`;
+                        };
+                        secretsList.appendChild(secretBox);
                     });
                 })
                 .catch(error => {
