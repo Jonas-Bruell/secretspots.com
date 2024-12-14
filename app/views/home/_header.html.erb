@@ -72,16 +72,22 @@
 
       <div class="d-flex navbar-text">
         <% if user_signed_in? %> 
-          <div> Welcome <%= current_user.email %> </div> 
+          
+          <div> Welcome <%= current_user.email %> </div>
+
           <% if current_user.profile_picture.attached? %>
-            <%= image_tag(current_user.profile_picture) %>
+            <%= link_to image_tag(current_user.profile_picture), edit_user_registration_path, method: :get  %>
           <% else %>
-            <%= button_to "Profile", edit_user_registration_path, method: :get %>
+            <%= link_to image_tag("/empty-profile-picture.png"), edit_user_registration_path, method: :get  %>
           <% end %>
+
           <%= button_to "Sign out", destroy_user_session_path, method: :delete %> 
+
         <% else %>
+
           <%= button_to "Sign in", new_user_session_path %> 
           <%= button_to "Log in", new_user_registration_path %>
+          
         <% end %>
       </div>
 
