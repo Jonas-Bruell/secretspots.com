@@ -1,6 +1,7 @@
 class Secret < ApplicationRecord
   belongs_to :user
   has_one_attached :image
+  has_many :comments, dependent: :destroy
 
   # https://www.youtube.com/watch?v=nqAnftA8LbA
   # https://www.youtube.com/watch?v=1cw6qO1EYGw

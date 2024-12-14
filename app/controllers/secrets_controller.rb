@@ -9,8 +9,8 @@ class SecretsController < ApplicationController
 
   # GET /secrets/1 or /secrets/1.json
   def show
-    @permission = if user_signed_in? && @secret.user_id == current_user.id then
-                    true else false
+    @permission = if user_signed_in? && @secret.user_id == current_user.id
+    @comments = @secret.comments
     end
   end
 

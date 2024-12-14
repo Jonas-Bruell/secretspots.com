@@ -20,8 +20,11 @@ Rails.application.routes.draw do
     # Defines the root path route ("/")
     root "home#index"
 
-    # CRUD
+    # CRUD for adventures and secrets
     resources :adventures
-    resources :secrets
+    resources :secrets do
+      # Nested comments resources under secrets
+      resources :comments, only: [:create, :destroy, :edit, :update]
+    end
   end
 end
