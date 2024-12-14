@@ -27,5 +27,14 @@
 #       "yes": yup
 #       enabled: "ON"
 
-en:
-  hello: "Hallo wereld"
+nl:
+  hello_world: "Hallo, wereld!"
+  secrets:
+    List:
+      new: "Maak nieuw pareltje"
+      show: "Toon dit pareltje"
+    secret:
+      user: "Gebruiker"
+      name: "Naam"
+      body: "Beschrijving"
+

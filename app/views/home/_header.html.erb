@@ -16,6 +16,17 @@
           <%= link_to "Adventures", adventures_path, class:"nav-link active" %>
         </li>
 
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Language
+          </a>
+          <ul class="dropdown-menu">
+            <!-- https://www.youtube.com/watch?v=4m64FHUrEhg -->
+            <li><a class="dropdown-item" href=<%= root_path(locale: :en) %>>English</a></li>
+            <li><a class="dropdown-item" href=<%= root_path(locale: :nl) %>>Nederlands</a></li>
+          </ul>
+        </li>
+
         
 
         <!-- Item
