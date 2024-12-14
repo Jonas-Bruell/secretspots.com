@@ -80,3 +80,6 @@ en:
     new: 
       title: "New"
       new: "New adventure"
+
+  profile:
+    edit-link: "Edit profile"

@@ -75,10 +75,11 @@
           
           <div> Welcome <%= current_user.email %> </div>
 
+          
           <% if current_user.profile_picture.attached? %>
-            <%= link_to image_tag(current_user.profile_picture), edit_user_registration_path, method: :get  %>
+            <%= link_to image_tag(current_user.profile_picture), "profiles/show"  %>
           <% else %>
-            <%= link_to image_tag("/empty-profile-picture.png"), edit_user_registration_path, method: :get  %>
+            <%= link_to image_tag("/empty-profile-picture.png"), "profiles/show"  %>
           <% end %>
 
           <%= button_to "Sign out", destroy_user_session_path, method: :delete %> 
@@ -87,7 +88,7 @@
 
           <%= button_to "Sign in", new_user_session_path %> 
           <%= button_to "Log in", new_user_registration_path %>
-          
+
         <% end %>
       </div>
 
