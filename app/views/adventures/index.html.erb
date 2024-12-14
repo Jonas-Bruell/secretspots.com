@@ -1,16 +1,14 @@
+<% content_for :title, t('global.adventures') %>
 
-
-<% content_for :title, "Adventures" %>
-
-<h1>Adventures</h1>
+<h1><%= t('global.adventures') %>:</h1>
 
 <div id="adventures">
   <% @adventures.each do |adventure| %>
     <%= render adventure %>
     <p>
-      <%= link_to "Show this adventure", adventure %>
+      <%= link_to t('adventures.show-link'), adventure %>
     </p>
   <% end %>
 </div>
 
-<%= link_to "New adventure", new_adventure_path %>
+<%= link_to t('adventures.new-link'), new_adventure_path %>

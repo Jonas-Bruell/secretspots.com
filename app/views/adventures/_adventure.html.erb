@@ -1,16 +1,17 @@
-<div id="<%= dom_id adventure %>">
+<div id="<%= dom_id adventure %>" style="border-style:solid">
+  
   <p>
-    <strong>User:</strong>
+    <strong><%= t('global.user') %></strong>
     <%= adventure.user_id %>
   </p>
 
   <p>
-    <strong>Name:</strong>
+    <strong><%= t('global.name') %></strong>
     <%= adventure.name %>
   </p>
 
   <p>
-    <strong>Body:</strong>
+    <strong><%= t('global.body') %></strong>
     <%= adventure.body %>
   </p>
 

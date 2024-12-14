@@ -1,11 +1,11 @@
-<% content_for :title, "New adventure" %>
+<% content_for :title, t('.title') %>
 
-<h1>New adventure</h1>
+<h1><%= t('.new') %></h1>
 
 <%= render "form", adventure: @adventure %>
 
 <br>
 
 <div>
-  <%= link_to "Back to adventures", adventures_path %>
+  <%= link_to t('adventures.back-link'), adventures_path %>
 </div>

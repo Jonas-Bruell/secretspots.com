@@ -1,7 +1,7 @@
 <%= form_with(model: adventure) do |form| %>
   <% if adventure.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(adventure.errors.count, "error") %> prohibited this adventure from being saved:</h2>
+      <h2><%= t('.messages.errors', count: adventures.errors.count)%></h2>
 
       <ul>
         <% adventure.errors.each do |error| %>
@@ -12,21 +12,16 @@
   <% end %>
 
   <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.text_field :user_id %>
-  </div>
-
-  <div>
-    <%= form.label :name, style: "display: block" %>
+    <%= form.label :name, t('global.name'), style: "display: block" %>
     <%= form.text_field :name %>
   </div>
 
   <div>
-    <%= form.label :body, style: "display: block" %>
+    <%= form.label :body, t('global.body'), style: "display: block" %>
     <%= form.text_area :body %>
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit t('.submit') %>
   </div>
 <% end %>

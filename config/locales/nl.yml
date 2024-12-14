@@ -27,5 +27,56 @@
 #       "yes": yup
 #       enabled: "ON"
 
-en:
-  hello: "Hallo wereld"
+nl:
+  hello_world: "Hallo, wereld!"
+
+  global:
+    user: "Gebruiker"
+    name: "Naam"
+    body: "Beschrijving"
+    secret: "Pareltje"
+    secrets: "Pareltjes"
+    adventure: "Avontuur"
+    adventures: "Avonturen"
+      
+  home:
+    header:
+      language: "Taal"
+
+  secrets:
+    back-link: "Terug naar pareltjes"
+    destroy-link: "Vernietig dit pareltje"
+    edit-link: "Bewerk dit pareltje"
+    show-link: "Toon dit pareltje"
+    new-link: "Maak nieuw pareltje"
+    form:
+      messages:
+        errors:
+          one: "Door één fout werd dit pareltje niet bewaard:"
+          other: "Door %{count} fouten werd dit pareltje niet bewaard:"
+      submit: "Aanmaken"
+    edit: 
+      title: "Bewerken"
+      edit: "Bewerk dit pareltje"
+    new:
+      title: "Aanmaken"
+      new: "Nieuw pareltje"
+
+  adventures:
+    back-link: "Terug naar avonturen"
+    destroy-link: "Vernietig dit avontuur"
+    edit-link: "Bewerk dit avontuur"
+    show-link: "Toon dit avontuur"
+    new-link: "Maak nieuw avontuur"
+    form:
+      messages:
+        errors:
+          one: "Door één fout werd dit avontuur niet bewaard:"
+          other: "Door %{count} fouten werd dit avontuur niet bewaard:"
+      submit: "Maak avontuur"
+    edit: 
+      title: "Bewerken"
+      edit: "Avontuur bewerken"
+    new: 
+      title: "Aanmaken"
+      new: "Nieuw avontuur"
