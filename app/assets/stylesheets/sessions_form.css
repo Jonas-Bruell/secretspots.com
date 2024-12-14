@@ -1,14 +1,52 @@
 .logInForm {
     text-align: center;
-    margin-top: 2%;
     border: 5px solid black;
-    margin-left:40%;
-    margin-right:40%;
+    margin-left:37.5%;
+    margin-right:37.5%;
     border-radius:10px;
+    height:auto;
+    border-style:double;
 }
 #LoginImg {
     text-align: center;
+    
 }
+#LoginImg > img {
+    width:15%;
+    height:auto;
+}
+@media screen and (max-width:990px){
+    .logInForm {
+        margin-left: 30%;
+        margin-right: 30%;
+    }
+    #LoginImg > img {
+        width:20%;
+        height: auto;
+    }
+}
+@media screen and (max-width:768px){
+    .logInForm {
+        margin-left: 22.5%;
+        margin-right: 22.5%;
+    }
+    #LoginImg > img {
+        width:20%;
+        height: auto;
+    }
+}
+@media screen and (max-width:600px){
+    .logInForm {
+        margin-left: 15%;
+        margin-right: 15%;
+    }
+    #LoginImg > img {
+        width:30%;
+        height: auto;
+    }
+}
+
+
 
 #TitleText{
     text-align: center;
@@ -33,5 +71,43 @@
 }
 #ifNotLoginOptions{
     margin-top: 12px;
-    margin-bottom: 3px;
+    margin-bottom: 20px;
 }
+
+.OmniAuth {
+    margin-bottom: 5px;
+    width: 95%;
+    height: 60px;
+    text-align: center;
+    margin-left: 2.5%;
+    border: black;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 4px;
+}
+.omniAuthButton {
+    background-color: lavender;
+    border: none;
+    float: left;
+    text-align: left;
+    padding: 0;
+    height:56px;
+    width: 100%;
+    
+}
+
+.inside{
+    float: right;
+    margin-top:-52px;
+}
+
+#error {
+    text-align: center;
+    color:red
+}
+
+#error_explanation > h2 {
+    font-size: medium;
+    color:red
+}
+

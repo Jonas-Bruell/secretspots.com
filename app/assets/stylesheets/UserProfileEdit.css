@@ -1,0 +1,43 @@
+input{
+    background-color:rgb(233, 231, 222);
+    padding:1%;
+    border-style: none;
+    border-radius:8px;
+    width:fit-content;    
+}
+.field{
+    margin-bottom:2%;
+    padding: 1%;
+    background-color: rgb(151, 151, 151);
+    border-radius: 5px;
+}
+label{
+    width:18%
+}
+em{
+    margin-left:20%;
+}
+
+.actions{
+    text-align: right;
+}
+.actions > input{
+    
+    background-color: azure;
+}
+.actions > input:hover, #cancel > form > button:hover{
+    background-color: rgb(184, 182, 182)
+}
+#cancel{
+    text-align: right;
+    margin-top: 1%;
+}
+#cancel > form > button{
+    border-style: none;
+    border-radius:5px;
+    background-color: azure;
+}
+
+#passwordEdit{
+    margin-top: 7.5%;
+}
