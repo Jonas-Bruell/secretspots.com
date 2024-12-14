@@ -18,7 +18,7 @@ class FlickrServices
     @secret_key = 'db2593e4b2524b2e' # ENV['FLICKR_SECRET_KEY']
   end
 
-  def search_photos(tags, lat, lon, radius = 5, per_page = 3)
+  def search_photos(tags, lat, lon, radius = 5, per_page = 5)
     params = {
       method: "flickr.photos.search",
       api_key: @api_key,
@@ -52,7 +52,12 @@ class FlickrServices
       nojsoncallback: 1,
       photo_id: photo_id
     }
-    make_request(params)
+    response = make_request(params)
+    if response && response["comments"] && response["comments"]["comment"]
+      response["comments"]["comment"].map { |comment| { author: comment["authorname"], content: comment["_content"] } }
+    else
+      []
+    end
   end
 
   def get_image_url(photo_id)
@@ -71,8 +76,8 @@ class FlickrServices
       if original_size
         original_size["source"]
       else
-        puts "Error: Original size not found."
-        nil
+        last_size = sizes.last
+        last_size["source"]
       end
     else
       puts "Error: Invalid response from API."
@@ -94,7 +99,7 @@ class FlickrServices
 end
 
 def search_valid_pics_and_data(flickr, tags, lat, lon, radius = 5, per_page = 5)
-  photos_response = flickr.search_photos(tags, lat, lon, radius)
+  photos_response = flickr.search_photos(tags, lat, lon, radius, per_page)
   if photos_response && photos_response["photos"] && photos_response["photos"]["photo"].any?
     valid_photos = []
     photos_response["photos"]["photo"].each do |photo|
@@ -117,44 +122,42 @@ def search_valid_pics_and_data(flickr, tags, lat, lon, radius = 5, per_page = 5)
       end
     end
 
-  if valid_photos.any?
-    photo_details_list = []
+    if valid_photos.any?
+      photo_details_list = []
 
-    valid_photos.each_with_index do |photo_data, index|
-      photo = photo_data[:photo]
-      photo_id = photo["id"]
-      username = photo_data[:username]
-      latitude = photo_data[:latitude]
-      longitude = photo_data[:longitude]
-      title = photo_data[:title]
-      description = photo_data[:description]
+      valid_photos.each_with_index do |photo_data, index|
+        photo = photo_data[:photo]
+        photo_id = photo["id"]
+        username = photo_data[:username]
+        latitude = photo_data[:latitude]
+        longitude = photo_data[:longitude]
+        title = photo_data[:title]
+        description = photo_data[:description]
 
-      photo_url = flickr.get_image_url(photo_id)
-      comments_response = flickr.get_photo_comments(photo_id)
-      photo_details = flickr.get_photo_details(photo_id)
-      post_url = photo_details && photo_details["photo"]["urls"]["url"] ? photo_details["photo"]["urls"]["url"].find { |url| url["_content"].include?("http") }["_content"] : "No URL found"
+        photo_url = flickr.get_image_url(photo_id)
+        comments = flickr.get_photo_comments(photo_id)
+        photo_details = flickr.get_photo_details(photo_id)
+        post_url = photo_details && photo_details["photo"]["urls"]["url"] ? photo_details["photo"]["urls"]["url"].find { |url| url["_content"].include?("http") }["_content"] : "No URL found"
 
-      comments = comments_response && comments_response["comments"] && comments_response["comments"]["comment"] ? comments_response["comments"]["comment"].map { |comment|
-        "#{comment["authorname"]}: #{comment["_content"]}"
-      } : []
-
-      photo_details_list << {
-        photo_number: index + 1,
-        title: title,
-        description: description,
-        username: username,
-        post_url: post_url,
-        photo_url: photo_url,
-        geo_location: { latitude: latitude, longitude: longitude },
-        comments: comments
-      }
+        photo_details_list << {
+          photo_number: index + 1,
+          title: title,
+          description: description,
+          username: username,
+          post_url: post_url,
+          photo_url: photo_url,
+          geo_location: { latitude: latitude, longitude: longitude },
+          comments: comments
+        }
+      end
+      photo_details_list
+    else
+      puts "No valid photos found with geo-location."
+      []
     end
-    photo_details_list
-  else
-    puts "No valid photos found with geo-location."
-  end
   else
     puts "No photos found."
+    []
   end
 end
 
@@ -172,7 +175,9 @@ def print_photo_details(photo_details_list)
 
       if photo_data[:comments].any?
         puts "Comments:"
-        photo_data[:comments].each { |comment| puts comment }
+        photo_data[:comments].each do |comment|
+          puts "#{comment[:author]}: #{comment[:content]}"
+        end
       end
 
       puts "-" * 100
@@ -182,9 +187,10 @@ def print_photo_details(photo_details_list)
   end
 end
 
+
 flickr_service = FlickrServices.new
 
-tags = "dog"
+tags = "cat"
 lat = 50.8503
 lon = 4.3517
 radius = 10
