@@ -64,6 +64,9 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_13_175017) do
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "latitude"
+    t.float "longitude"
+    t.text "description"
     t.index ["user_id"], name: "index_secrets_on_user_id"
   end
 
