@@ -1,21 +1,19 @@
-input{
-    background-color:rgb(233, 231, 222);
-    padding:1%;
-    border-style: none;
-    border-radius:8px;
-    width:fit-content;    
-}
+
 .field{
     margin-bottom:2%;
     padding: 1%;
     background-color: rgb(151, 151, 151);
     border-radius: 5px;
 }
+input {
+    background-color:rgb(233, 231, 222);
+    padding:1%;
+    border-style: none;
+    border-radius:8px;
+    width:fit-content; 
+}
 label{
     width:18%
-}
-em{
-    margin-left:20%;
 }
 
 .actions{
@@ -40,4 +38,7 @@ em{
 
 #passwordEdit{
     margin-top: 7.5%;
+}
+.field_with_errors{
+    display: inline-block;
 }
