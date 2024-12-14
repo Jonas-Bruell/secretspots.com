@@ -22,6 +22,23 @@ class CommentsController < ApplicationController
     end
   end
 
+  def edit
+    @comment = @secret.comments.find(params[:id])
+    if @comment.user != current_user
+      redirect_to @secret, alert: 'You can only edit your own comments.'
+    end
+  end
+
+  def update
+    @comment = @secret.comments.find(params[:id])
+    if @comment.user == current_user && @comment.update(comment_params)
+      @comment.update(edited: true)  # Mark the comment as edited
+      redirect_to @secret, notice: 'Comment was successfully updated.'
+    else
+      redirect_to @secret, alert: 'Error updating comment.'
+    end
+  end
+
   private
 
   def set_secret

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_12_14_103539) do
+ActiveRecord::Schema[8.0].define(version: 2024_12_14_132817) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -59,12 +59,13 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_14_103539) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.text "content"
     t.integer "user_id", null: false
-    t.integer "secret_spot_id", null: false
+    t.integer "secret_id", null: false
+    t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["secret_spot_id"], name: "index_comments_on_secret_spot_id"
+    t.boolean "edited", default: false
+    t.index ["secret_id"], name: "index_comments_on_secret_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
@@ -74,9 +75,6 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_14_103539) do
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.float "latitude"
-    t.float "longitude"
-    t.text "description"
     t.index ["user_id"], name: "index_secrets_on_user_id"
   end
 
@@ -90,6 +88,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_14_103539) do
     t.datetime "updated_at", null: false
     t.string "provider"
     t.string "uid"
+    t.string "username"
     t.index ["email"], name: "index_users_on_email"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token"
   end
@@ -97,7 +96,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_14_103539) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "adventures", "users"
-  add_foreign_key "comments", "secret_spots"
+  add_foreign_key "comments", "secrets"
   add_foreign_key "comments", "users"
   add_foreign_key "secrets", "users"
 end

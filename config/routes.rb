@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     resources :adventures
     resources :secrets do
       # Nested comments resources under secrets
-      resources :comments, only: [:create, :destroy], shallow: true
+      resources :comments, only: [:create, :destroy, :edit, :update]
     end
   end
 end
