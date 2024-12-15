@@ -1,0 +1,44 @@
+#UserProfileOverview {
+    margin-top: 5%;
+    padding:2.5%;
+    margin-left: 8%;
+    margin-right:8%;
+    text-align: left;
+    height:100%;
+    color:black;
+    border-radius:10px;
+    background-color: rgb(199, 197, 197);
+}
+label{
+    float:left;
+    padding-top:5px;
+    text-align: left;
+    width:20%;
+    font-weight: 500;
+}
+
+
+#title{
+    text-align: center;
+}
+
+#return > button{
+    text-decoration: none;
+    color:black;
+    background-color: rgb(163, 163, 163);
+    padding: 0.5%;
+    padding-left: 2%;
+    padding-right: 2%;
+    border-radius: 10px;
+    border-style: none;
+}
+#return{
+    margin-top: 4%;
+}
+#return > button:hover{
+    background-color: rgb(134, 134, 134);
+}
+
+#error{
+    color:red;
+}

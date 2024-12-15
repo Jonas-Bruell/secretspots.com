@@ -1,0 +1,12 @@
+.nav-item:hover,.navbar-brand:hover{
+    background-color: rgb(24, 23, 23);
+    border-radius: 5px;
+
+}
+.navbar-brand{
+    padding:5px;
+}
+
+.button_to{
+    margin-left:8px;
+}

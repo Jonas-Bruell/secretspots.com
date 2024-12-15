@@ -6,6 +6,7 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: [:google_oauth2]
 
   has_one_attached :profile_picture
+  has_many :secrets
 
   # https://youtu.be/CnZnwV38cjo?si=RIWOtrHfye9xI44s
   def self.from_omniauth(auth)
