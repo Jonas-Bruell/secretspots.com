@@ -5,7 +5,11 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: [:google_oauth2, :github]
 
+
   has_one_attached :profile_picture
+
+
+  has_many :secrets
 
   # https://dev.to/ahmadraza/google-login-in-rails-7-with-devise-2gpo#step-3-configure-controller#step-2-configure-devise-model
   def self.from_google(u)
@@ -16,7 +20,6 @@ class User < ApplicationRecord
   def self.from_omniauth(access_token)
     data = access_token.info
     user = User.where(email: data['email']).first
-
      # Uncomment the section below if you want users to be created if they don't exist
      unless user
         user = User.create(

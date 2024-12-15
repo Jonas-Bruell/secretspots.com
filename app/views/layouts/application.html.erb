@@ -32,7 +32,9 @@
 
   <body>
     <div id="TopBorder"></div>
+    <% if @show_header then%> 
       <%= render "home/header" %>
+    <%end %>
     <!-- Devise authentication -->
     <!-- https://www.monterail.com/blog/how-to-set-up-user-authentication-and-authorization-in-ruby-on-rails -->
     <% if notice %>

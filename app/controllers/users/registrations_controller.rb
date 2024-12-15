@@ -1,3 +1,4 @@
+
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
@@ -60,4 +61,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  def edit
+    @show_header = true
+    super
+  end
+  def view
+    puts current_user.secrets.count
+  end
+  def update
+    puts account_update_params
+    @account_params = account_update_params
+    super
+  end
+
 end

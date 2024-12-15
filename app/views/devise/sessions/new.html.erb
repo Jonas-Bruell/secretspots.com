@@ -1,8 +1,12 @@
 <%= stylesheet_link_tag "sessions_form" %>
 <%= render "devise/shared/logoText"%>
+
 <div class="logInForm">   
 <h2>Log in</h2>
-
+<% @show_header = false%>
+<%if alert then %>
+  <div id ="error"><%= alert %></div>
+<%end%>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
     <%= f.label :email, "Email:" %><br />
