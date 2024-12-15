@@ -1,6 +1,23 @@
+@import "UserProfile.css";
+
+
+.properties{
+    display:flex;
+    flex-direction: column;
+}
+.property{
+    margin-bottom: 2%;
+    width: 50%;
+    display:flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 1%;
+    background-color: rgb(151, 151, 151);
+    border-radius: 5px;
+    box-sizing: border-box;
+}
 .field, .field_number{
     background-color:rgb(233, 231, 222);
-    margin-left: 20%;
     padding:1%;
     border-style: none;
     border-radius:5px;
@@ -20,10 +37,4 @@
 
 #UserProfileOverview > .button_to{
     margin-left: 0%;
-}
-.property{
-    margin-bottom: 2%;
-    padding: 1%;
-    background-color: rgb(151, 151, 151);
-    border-radius: 5px;
 }
