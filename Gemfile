@@ -45,7 +45,7 @@ group :development, :test do
   gem "rubocop-rails-omakase", require: false
 
   # Load environment variables from .env file
-  gem "dotenv-rails", "~> 3.0"
+  gem "dotenv-rails", "~> 3.1"
 end
 
 group :development do
