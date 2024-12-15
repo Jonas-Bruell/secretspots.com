@@ -7,7 +7,6 @@ Rails.application.routes.draw do
 
   get 'secrets/map_data', to: 'secrets#map_data', as: :secrets_map_data
 
-
   # Render dynamic PWA files from app/views/pwa/*
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
@@ -19,11 +18,10 @@ Rails.application.routes.draw do
       omniauth_callbacks: 'users/omniauth_callbacks',
       sessions: "users/sessions",
       registrations: "users/registrations"
-    }
-    devise_scope :user do
+  }
+  devise_scope :user do
     get "/user/view" => "users/registrations#view"
-    end
-
+  end
 
   # puts locale in the URL
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
