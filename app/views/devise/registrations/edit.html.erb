@@ -1,3 +1,4 @@
+
 <%= stylesheet_link_tag "UserProfile" %>
 <%= stylesheet_link_tag "UserProfileEdit" %>
 
@@ -6,7 +7,10 @@
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
-
+  <div>
+    <%= f.label :profile_picture %>
+    <%= f.file_field :profile_picture %>
+  </div>
   <div class="field">
     <%= f.label :"email:" %>
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
@@ -51,3 +55,4 @@
 
 <div id="return"><button onclick="history.back()">Back</button></div>
 </div>
+

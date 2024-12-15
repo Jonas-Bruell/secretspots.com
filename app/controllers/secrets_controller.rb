@@ -2,6 +2,12 @@ class SecretsController < ApplicationController
   # before_action :authenticate_user!, exept: [:index, :show] #how to not break the tests?
   before_action :set_secret, only: %i[ show edit update destroy ]
 
+
+  def map_data
+    @secrets = Secret.all
+    render json: @secrets
+  end
+
   # GET /secrets or /secrets.json
   def index
     # @show_header = true
@@ -10,8 +16,8 @@ class SecretsController < ApplicationController
 
   # GET /secrets/1 or /secrets/1.json
   def show
-    @permission = if user_signed_in? && @secret.user_id == current_user.id then
-                    true else false
+    @permission = if user_signed_in? && @secret.user_id == current_user.id
+    @comments = @secret.comments
     end
   end
 
@@ -71,6 +77,6 @@ class SecretsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def secret_params
-      params.require(:secret).permit(:name, :image, :body)
+      params.require(:secret).permit(:name, :image, :description, :latitude, :longitude, :address)
     end
 end

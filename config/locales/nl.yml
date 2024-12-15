@@ -80,3 +80,6 @@ nl:
     new: 
       title: "Aanmaken"
       new: "Nieuw avontuur"
+
+  profile:
+    edit-link: "Profiel bewerken"
