@@ -12,8 +12,9 @@ Rails.application.routes.draw do
   # Devise :: https://www.digitalocean.com/community/tutorials/how-to-set-up-user-authentication-with-devise-in-a-rails-7-application
   # Profile picture :: https://www.youtube.com/watch?v=fcoxyZ5mYfQ
   devise_for :users, controllers: {
-    omniauth_callbacks: 'users/omniauth_callbacks',
-    registrations: 'users/registrations'
+    registrations: 'users/registrations',
+    sessions: 'users/sessions',
+    omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
   # puts locale in the URL

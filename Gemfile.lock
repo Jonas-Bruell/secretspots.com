@@ -368,7 +368,7 @@ DEPENDENCIES
   omniauth
   omniauth-github
   omniauth-google-oauth2
-  omniauth-rails_csrf_protection
+  omniauth-rails_csrf_protection (~> 1.0)
   puma (>= 5.0)
   rails (~> 8.0.1)
   rails-i18n
