@@ -22,7 +22,8 @@ Rails.application.routes.draw do
     root "home#index"
 
     # CRUD for adventures and secrets
-      resources :adventures
+    resources :users, only: [:show]
+    resources :adventures
     resources :secrets do
       # Nested comments resources under secrets
       resources :comments, only: [:create, :destroy, :edit, :update]
