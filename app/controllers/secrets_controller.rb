@@ -10,6 +10,7 @@ class SecretsController < ApplicationController
 
   # GET /secrets or /secrets.json
   def index
+    # @show_header = true
     @secrets = Secret.all
   end
 
@@ -22,6 +23,7 @@ class SecretsController < ApplicationController
 
   # GET /secrets/new
   def new
+    # @show_header = true
     @secret = Secret.new
   end
 

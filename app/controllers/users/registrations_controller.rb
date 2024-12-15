@@ -1,3 +1,4 @@
+
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
@@ -28,6 +29,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def destroy
   #   super
   # end
+
+  # https://youtu.be/CnZnwV38cjo?si=4_VcHgCJ4P2F_PpY&t=1454
+  def update_resource(resource, params)
+    if resource.provider == 'google.oauth2'
+      params.delete('current_password')
+      resource.password = params['password']
+      resource.update_without_password(params)
+    else
+      resource.update_with_password(params)
+    end
+  end
 
   # GET /resource/cancel
   # Forces the session data which is usually expired after sign
@@ -60,4 +72,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  def edit
+    @show_header = true
+    super
+  end
+  def view
+    puts current_user.secrets.count
+  end
+  def update
+    puts account_update_params
+    @account_params = account_update_params
+    super
+  end
+
 end

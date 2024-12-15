@@ -1,0 +1,29 @@
+.field, .field_number{
+    background-color:rgb(233, 231, 222);
+    margin-left: 20%;
+    padding:1%;
+    border-style: none;
+    border-radius:5px;
+    width:fit-content;
+}
+
+#editButton{
+    margin-left:0%;
+    margin-top: 1%;
+    border-radius: 10px;
+    border-style: none;
+    background-color: rgb(163, 163, 163);
+}
+#editButton:hover{
+    background-color: rgb(134, 134, 134);
+}
+
+#UserProfileOverview > .button_to{
+    margin-left: 0%;
+}
+.property{
+    margin-bottom: 2%;
+    padding: 1%;
+    background-color: rgb(151, 151, 151);
+    border-radius: 5px;
+}

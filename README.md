@@ -40,6 +40,13 @@ Things you may want to cover:
 
 * Configuration
 
+    * Adding / deleting API keys
+        1. Make sure you have the (correct) ```master.key``` file in your ```/config```-folder.
+        2. Run the ```EDITOR="code --wait" rails credentials:edit```-command in a terminal.
+        3. Add the keys in the ```<data>-<hash>-credentials.yml```-file that opens in your editor.
+        4. Save & close this file, this saves the changes to the encrypted ```credentials.yml.enc```-file.
+        5. In the codebase, use ```Rails.application.credentials.dig('<KEY>')``` to retrieve the keys from the encrypted file.
+
 * Database creation
 
 * Database initialization
