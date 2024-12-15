@@ -1,0 +1,62 @@
+<h1><%= @user.username %>'s Profile</h1>
+
+<% if @user.profile_picture.attached? %>
+  <div class="profile-picture">
+    <%= image_tag @user.profile_picture, alt: "Profile Picture", class: "profile-picture" %>
+  </div>
+<% else %>
+  <p>No profile picture available.</p>
+<% end %>
+
+<h2>Secrets Posted:</h2>
+
+<% if @secrets.any? %>
+  <div class="secrets-list">
+    <% @secrets.each do |secret| %>
+      <div id="<%= dom_id(secret) %>" style="border-style:solid; margin-bottom: 10px; padding: 10px;">
+        <p>
+          <strong><%= t('global.user') %></strong>
+          <%= secret.user.username %>
+        </p>
+
+        <p>
+          <strong><%= t('global.name') %></strong>
+          <%= link_to secret.name, secret_path(secret) %>
+        </p>
+
+        <%= link_to image_tag(secret.image_as_thumbnail), secret.image if secret.image.attached? %>
+
+        <p>
+          <strong><%= t('global.body') %></strong>
+          <%= secret.body %>
+        </p>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <p>This user hasn't posted any secrets yet.</p>
+<% end %>
+
+<h2>Comments Made:</h2>
+
+<% if @comments.any? %>
+  <div class="comments-list">
+    <% @comments.each do |comment| %>
+      <div id="<%= dom_id(comment) %>" style="border-style:solid; margin-bottom: 10px; padding: 10px;">
+        <p>
+          <strong><%= t('global.secret_name') %></strong>
+          <%= link_to comment.secret.name, secret_path(comment.secret) %>
+        </p>
+
+        <p>
+          <strong><%= t('global.comment_body') %></strong>
+          <%= comment.content %>
+        </p>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <p>You haven't commented on any secrets yet.</p>
+<% end %>
+
+<%= link_to 'Back to Home', root_path %>

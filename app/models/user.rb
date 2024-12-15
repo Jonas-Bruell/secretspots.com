@@ -7,6 +7,8 @@ class User < ApplicationRecord
 
   has_one_attached :profile_picture
 
+  validates :username, presence: true, uniqueness: true
+
   # https://dev.to/ahmadraza/google-login-in-rails-7-with-devise-2gpo#step-3-configure-controller#step-2-configure-devise-model
   def self.from_google(u)
     create_with(uid: u[:uid], provider: 'google', password: Devise.friendly_token[0, 20]).find_or_create_by!(email: u[:email])
