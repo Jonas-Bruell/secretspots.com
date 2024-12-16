@@ -79,7 +79,9 @@
           <% if current_user.profile_picture.attached? %>
             <%= link_to image_tag(current_user.profile_picture), user_view_path, method: :get  %>
           <% else %>
-            <%= link_to image_tag("/empty-profile-picture.png"), user_view_path, method: :get  %>
+
+            <%= link_to image_tag("/assets/empty-profile-picture.png"), user_view_path, method: :get  %>
+
           <% end %>
 
 
