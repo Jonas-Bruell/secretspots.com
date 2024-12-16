@@ -1,17 +1,18 @@
-<%= stylesheet_link_tag "UserProfile" %>
 <%= stylesheet_link_tag "UserProfileView" %>
 <div id="UserProfileOverview">
 <h2 id="title">Profile</h2>
-<div class="property">
-    <label>Email:</label>
-    <div class = "field">
-        <%= current_user.email%>
+<div class="properties">
+    <div class="property">
+        <label>Email:</label>
+        <div class = "field">
+            <%= current_user.email%>
+        </div>
     </div>
-</div>
-<div class="property">
-    <label >Number of secrets found:</label>
-    <div class = "field_number" >
-            <%= current_user.secrets.count%>   
+    <div class="property">
+        <label >Number of secrets found:</label>
+        <div class = "field_number" >
+                <%= current_user.secrets.count%> 
+        </div>
     </div>
 </div>
     <%= button_to "Edit profile", edit_user_registration_path, method: :get, id:"editButton" %>

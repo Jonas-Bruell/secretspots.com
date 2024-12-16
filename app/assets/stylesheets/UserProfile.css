@@ -10,11 +10,10 @@
     background-color: rgb(199, 197, 197);
 }
 label{
-    float:left;
     padding-top:5px;
     text-align: left;
-    width:20%;
     font-weight: 500;
+    width:40%;
 }
 
 
