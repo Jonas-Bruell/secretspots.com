@@ -38,6 +38,8 @@ en:
     secrets: "Secrets"
     adventure: "Adventure"
     adventures: "Adventures"
+    friend: "Friend"
+    friends: "Friends"
 
   home:
     header:
