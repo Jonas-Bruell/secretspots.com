@@ -4,9 +4,7 @@
 
 <div id="map" style="width: 80%; height: 400px; margin: 0 auto; border: 1px solid #ccc; margin-bottom: 20px;"></div>
 
-
-<<<<<<< HEAD
-=======
+<script>
   function initMap() {
    
     const mapCenter = { lat: 50.8503, lng: 4.3517 }; // Default center (Brussels)
@@ -47,7 +45,6 @@
 </script>
 
 <!-- Secrets display sectie -->
->>>>>>> Jonas
 <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin: 20px auto; max-width: 1200px;">
   <% @secrets.each do |secret| %>
     <div class="secret-box" style="width: 300px; border: 1px solid #ddd; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); background-color: #fff; overflow: hidden; transition: transform 0.2s ease, box-shadow 0.2s ease; cursor: pointer;"
@@ -186,7 +183,7 @@
 </script>
 
 <script async
-  src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_API_KEY'] %>&callback=initMap&libraries=geometry">
+  src="https://maps.googleapis.com/maps/api/js?key=<%= Rails.application.credentials.dig('GOOGLE_MAPS_API_KEY') %>&callback=initMap&libraries=geometry">
 </script>
 
 <style>
