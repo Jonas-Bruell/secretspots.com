@@ -6,45 +6,59 @@
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
-  <div>
-    <%= f.label :profile_picture %>
-    <%= f.file_field :profile_picture %>
-  </div>
-  <div class="field">
-    <%= f.label :"email:" %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+  <div class="attributes">
+    <div class = "properties">
+      <div class="field">
+        <div class="interactive">
+          <%= f.label :"email:" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        </div>
+      </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-  <div class="field">
-    <%= f.label :"current_password:" %> 
-    <!-- if we submitted an incorrect form, the already filled in fields should stay filled-->
-    <% if @account_params then %>
-      <%= f.password_field :current_password, autocomplete: "current-password", value: @account_params[:current_password] %>
-    <%else%>
-      <%= f.password_field :current_password, autocomplete: "current-password" %>
-    <%end%>
-    <i>(we need your current password to confirm your changes)</i>
-  </div>
-  <div id="passwordEdit">
-    <div class="field">
-      <%= f.label :"password:" %> 
-      <%= f.password_field :password, autocomplete: "new-password" %>
-      <i>(leave blank if you don't want to change it)</i>
-      <% if @minimum_password_length %>
-       <br> <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
       <% end %>
-    </div>
+      <div class="field">
+        <div class="interactive">
+          <%= f.label :"current_password:" %> 
+          <!-- if we submitted an incorrect form, the already filled in fields should stay filled-->
+          <% if @account_params then %>
+            <%= f.password_field :current_password, autocomplete: "current-password", value: @account_params[:current_password] %>
+          <%else%>
+            <%= f.password_field :current_password, autocomplete: "current-password" %>
+          <%end%>
+        </div>
+        <i class="info"> (we need your current password to confirm your changes)</i>
+      </div>
+      <div id="passwordEdit">
+        <div class="field">
+          <div class="interactive">
+            <%= f.label :"password:" %> 
+            <%= f.password_field :password, autocomplete: "new-password" %>
+          </div>
+          <div class="info">
+            <i> (leave blank if you don't want to change it)  </i>
+          <% if @minimum_password_length %>
+           <em> (<%= @minimum_password_length %> characters minimum)</em>
+          <% end %>
+          </div>
+        </div>
 
-    <div class="field" id="confirmation">
-      <%= f.label :"password_confirmation:" %>
-      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-    </div>
+        <div class="field" id="confirmation">
+          <div class="interactive">
+            <%= f.label :"password_confirmation:" %>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+          </div>
+        </div>
+      </div>
+      </div>
+          <div id ="prof_pic">
+        <label for="user_profile_picture">
+          <%= image_tag(current_user.profile_picture)%>
+        </label>
+        <%= f.file_field  :profile_picture %>
+      </div>
   </div>
-  
-
   <div class="actions">
     <%= f.submit "Update profile" %>
   </div>
