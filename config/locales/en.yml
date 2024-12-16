@@ -61,6 +61,7 @@ en:
     new:
       title: "New"
       new: "New secret"
+      create: "Create secret"
 
   adventures:
     back-link: "Back to adventures"
