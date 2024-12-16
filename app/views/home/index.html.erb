@@ -2,73 +2,26 @@
   <%= t('global.secrets') %>
 </h1>
 
-<!-- container vr de map -->
-<div id="map" style="width: 100%; height: 500px; border: 1px solid #ccc; margin-bottom: 20px;"></div>
+<div id="map" style="width: 80%; height: 400px; margin: 0 auto; border: 1px solid #ccc; margin-bottom: 20px;"></div>
 
-<script>
-  let map;
-  let markers = [];
 
-  function initMap() {
-   
-    const mapCenter = { lat: 50.8503, lng: 4.3517 }; // Default center (Brussels)
-    map = new google.maps.Map(document.getElementById("map"), {
-      center: mapCenter,
-      zoom: 12,
-    });
-
-    fetch("<%= secrets_map_data_path %>")
-      .then(response => response.json())
-      .then(data => {
-        data.forEach(secret => {
-          const position = { lat: parseFloat(secret.latitude), lng: parseFloat(secret.longitude) };
-          const marker = new google.maps.Marker({
-            position: position,
-            map: map,
-            title: secret.name
-          });
-
-          const infoWindow = new google.maps.InfoWindow({
-            content: `<h3>${secret.name}</h3><p>${secret.description || ''}</p>`
-          });
-
-          marker.addListener("click", () => {
-            infoWindow.open(map, marker);
-          });
-
-          markers.push(marker);
-        });
-      })
-      .catch(error => console.error("Error fetching map data:", error));
-  }
-</script>
-
-<!-- laad api binnen -->
-<script async
-  src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_API_KEY'] %>&callback=initMap">
-</script>
-
-<!-- Secrets display sectie -->
 <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin: 20px auto; max-width: 1200px;">
   <% @secrets.each do |secret| %>
     <div class="secret-box" style="width: 300px; border: 1px solid #ddd; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); background-color: #fff; overflow: hidden; transition: transform 0.2s ease, box-shadow 0.2s ease; cursor: pointer;"
          onclick="window.location.href='<%= secret_path(secret) %>'">
 
-      <!-- Image Thumbnail -->
       <% if secret.image.attached? %>
         <div style="height: 150px; overflow: hidden;">
           <%= image_tag(secret.image, alt: secret.name, style: "width: 100%; height: 100%; object-fit: cover;") %>
         </div>
       <% end %>
 
-      <!-- Content Section -->
       <div style="padding: 15px; text-align: center;">
-        <!-- Secret Name -->
+   
         <h2 style="font-size: 1.5em; color: #333; margin-bottom: 10px;">
           <%= secret.name %>
         </h2>
 
-        <!-- Secret Description -->
         <% if secret.description.present? %>
           <p style="color: #555; font-size: 0.9em; margin-bottom: 10px;">
             <%= truncate(secret.description, length: 80, omission: '...') %>
@@ -79,14 +32,12 @@
           </p>
         <% end %>
 
-        <!-- Secret Address -->
         <% if secret.address.present? %>
           <p style="color: #666; font-size: 0.9em; margin-bottom: 10px;">
             <strong><%= t('secrets.address') %>:</strong> <%= secret.address %>
           </p>
         <% end %>
 
-        <!-- Secret Creator -->
         <div style="color: #777; font-size: 0.8em;">
           <%= t('global.user') %> <strong><%= secret.user.email if secret.user.present? %></strong>
         </div>
@@ -95,7 +46,106 @@
   <% end %>
 </div>
 
-<!-- CSS for Hover Effect -->
+<script>
+  let map;
+  let markers = [];
+  let circle;
+  let mapCenter = { lat: 50.8503, lng: 4.3517 }; // defaut Brussels
+  let centerMarker;
+
+  function initMap() {
+    // Check if geolocation is available
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          // Use user's current location
+          mapCenter = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+          };
+          createMap();
+        },
+        () => {
+          console.warn("Geolocation failed or blocked. Using default center.");
+          createMap();
+        }
+      );
+    } else {
+      console.warn("Geolocation not supported. Using default center.");
+      createMap();
+    }
+  }
+
+  function createMap() {
+ 
+    map = new google.maps.Map(document.getElementById("map"), {
+      center: mapCenter,
+      zoom: 12,
+    });
+
+    
+
+    // draw  1km radius circle
+    circle = new google.maps.Circle({
+      strokeColor: "#007BFF",
+      strokeOpacity: 0.8,
+      strokeWeight: 2,
+      fillColor: "#007BFF",
+      fillOpacity: 0.2,
+      map: map,
+      center: mapCenter,
+      radius: 1000, // 1 km in meters
+    });
+
+    
+    fetch("<%= secrets_map_data_path %>")
+      .then(response => response.json())
+      .then(data => {
+        data.forEach(secret => {
+          const position = { lat: parseFloat(secret.latitude), lng: parseFloat(secret.longitude) };
+
+          
+          const distance = google.maps.geometry.spherical.computeDistanceBetween(
+            new google.maps.LatLng(position.lat, position.lng),
+            circle.getCenter()
+          );
+
+          
+          let markerOptions = {
+            position: position,
+            map: map,
+            title: secret.name,
+          };
+
+          if (distance > circle.getRadius()) {
+            // outside circle === use red dot
+            markerOptions.icon = {
+              path: google.maps.SymbolPath.CIRCLE,
+              scale: 6,
+              fillColor: "#FF0000",
+              fillOpacity: 1,
+              strokeColor: "#FF0000",
+              strokeWeight: 1,
+            };
+          }
+
+          const marker = new google.maps.Marker(markerOptions);
+
+          marker.addListener("click", () => {
+            window.location.href = `/secrets/${secret.id}`;
+          });
+
+          markers.push(marker);
+        });
+      })
+      .catch(error => console.error("Error fetching map data:", error));
+  }
+</script>
+
+<script async
+  src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_API_KEY'] %>&callback=initMap&libraries=geometry">
+</script>
+
 <style>
   .secret-box:hover {
     transform: translateY(-5px);
