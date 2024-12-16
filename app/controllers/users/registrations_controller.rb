@@ -74,7 +74,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   def edit
-    @show_header = true
     super
   end
   def view
@@ -85,5 +84,4 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @account_params = account_update_params
     super
   end
-
 end

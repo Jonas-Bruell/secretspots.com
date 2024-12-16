@@ -9,11 +9,42 @@
     border-radius:10px;
     background-color: rgb(199, 197, 197);
 }
+.attributes{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+img{
+    height: 10vw;
+    border-radius: 5px;
+}
+#prof_pic{
+    height: fit-content;
+    margin-top: -0.5%;
+}
+
+@media screen and (max-width:768px) {
+    .attributes{
+        flex-direction: column-reverse;
+    }
+    #prof_pic{
+        margin-top: 0%;
+        margin-bottom: 1%;
+        align-self: center;
+    }
+    img{
+        height: 25vw;
+    }
+}
+.properties{
+    display:flex;
+    flex-direction: column;
+    width: 100%;
+}
 label{
     padding-top:5px;
     text-align: left;
     font-weight: 500;
-    width:40%;
 }
 
 
