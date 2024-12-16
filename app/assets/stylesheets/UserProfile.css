@@ -16,11 +16,18 @@
 }
 img{
     height: 10vw;
-    border-radius: 5px;
+    width:10vw;
+    vertical-align: middle;
+    border-radius: 50%;
 }
 #prof_pic{
     height: fit-content;
-    margin-top: -0.5%;
+    margin-top: -5%;
+    padding:1%;
+    border-style: dashed;
+    border-radius: 10px;;
+    border-color:rgb(139, 139, 139);
+    background-color: rgb(178, 178, 179);
 }
 
 @media screen and (max-width:768px) {
@@ -33,13 +40,14 @@ img{
         align-self: center;
     }
     img{
-        height: 25vw;
+        height: 20vw;
+        width:20vw;
     }
 }
 .properties{
     display:flex;
     flex-direction: column;
-    width: 100%;
+    width: 83%;
 }
 label{
     padding-top:5px;
