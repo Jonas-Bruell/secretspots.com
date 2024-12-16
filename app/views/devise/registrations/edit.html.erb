@@ -3,13 +3,13 @@
 <script >
   function checkpassword(){
     const valid = document.getElementById('passwordfield').value.length > 0
-    console.log("hey")
     if (valid){
       document.getElementById('submit').disabled = false;
     }else{
       document.getElementById('submit').disabled = true;
     }
   }
+  
 </script>
 <div id="UserProfileOverview">
 <h2 id="title">Edit Profile</h2>
@@ -64,7 +64,7 @@
       </div>
           <div id ="prof_pic">
         <label for="user_profile_picture">
-          <%= image_tag(current_user.profile_picture)%>
+          <%= image_tag(current_user.profile_picture, id:"editProfPicImg") %>
         </label>
         <%= f.file_field  :profile_picture %>
       </div>
@@ -73,7 +73,19 @@
     <%= f.submit "Update profile", disabled:"disabled",id:"submit" %>
   </div>
 <% end %>
+<script>
+  const user_profile_picture = document.getElementById('user_profile_picture')
+  user_profile_picture.addEventListener("change", () => {
+      if (user_profile_picture.files.length == 1) {
+      imgupdate(user_profile_picture.files[0]);
+    }
+  }
 
+  )
+  function imgupdate(image){
+    document.getElementById('editProfPicImg').src = URL.createObjectURL(image)
+  }
+</script>
 <div id="cancel"> <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
 
 <div id="return"><button onclick="history.back()">Back</button></div>
