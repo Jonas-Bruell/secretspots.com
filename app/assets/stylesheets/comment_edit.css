@@ -73,7 +73,7 @@
   }
   
   /* Back Link */
-  a {
+  .edit-comment-a {
     display: block;
     text-align: center;
     margin-top: 20px;
@@ -82,7 +82,7 @@
     text-decoration: none;
   }
   
-  a:hover {
+  .edit-comment-aa:hover {
     text-decoration: underline;
   }
   
