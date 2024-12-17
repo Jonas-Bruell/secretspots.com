@@ -3,7 +3,12 @@ class UsersController < ApplicationController
   include UsersHelper
   before_action :set_user
 
-  def show; end
+  def show
+  end
+
+  def followers; end
+
+  def following; end
 
   def follow
     Relationship.create_or_find_by(follower_id: current_user.id, followee_id: @user.id)

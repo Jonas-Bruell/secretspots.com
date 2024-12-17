@@ -1,47 +1,54 @@
 <!-- copied from devise/registrations/view for testing -->
-<%= stylesheet_link_tag "UserProfile" %>
 <%= stylesheet_link_tag "UserProfileView" %>
 <div id="UserProfileOverview">
 <h2 id="title">Profile</h2>
-  <div class="property">
-      <label>Email:</label>
-      <div class = "field">
-          <%= @user.email%>
+  <div class="attributes">
+    <div class="properties">
+      <div class="property">
+        <label>Username:</label>
+          <div class= "field">
+            <%= @user.username%>
+          </div>
       </div>
-  </div>
-  <div class="property">
-      <label >Number of secrets found:</label>
-      <div class="field_number"><%= @user.secrets.count %></div>
-  </div>
+      <div class="property">
+          <label>Email:</label>
+          <div class = "field">
+              <%= @user.email%>
+          </div>
+      </div>
+      <div class="property">
+          <label >Number of secrets found:</label>
+          <div class="field_number"><%= @user.secrets.count %></div>
+      </div>
 
-  <div class="property">
-    <label >Number of followers:</label>
-    <%= render "users/follower_count" %>
-    <label >Number of followees:</label>
-    <div class="field_number"><%= @user.followees.count %></div>
-  </div>
-
-  <% if @user == current_user %>
-    <!-- TODO -->
-    <p>code voor in een followers/followee page</p>
-    <div>
-      <p> People I follow </p>
-      <% current_user.followees.each do |u| %>
-        <%= u.email %>
+      <div class="property">
+        <label >Followers:</label>
+        <div class="field_number"><%= render "users/follower_count" %></div>
+      </div>
+      <div class="property">
+        <label >Following:</label>
+        <div class="field_number"><%= @user.followees.count %></div>
+      </div>
+    
+      <div class="statsbutton">
+        <%= button_to "followers", followers_path,method: :get, class:"statsbutton" %>
+      </div>  
+      <div class="statsbutton">
+        <%= button_to "following", following_path,method: :get, class:"statsbutton" %>
+      </div>
+    </div>
+    <div id ="prof_pic">
+      <% if @user.profile_picture.attached? %>
+        <%= image_tag(@user.profile_picture, id:"editProfPicImg") %>
+      <% else %>
+        <%= image_tag("/assets/empty-profile-picture.png", id:"editProfPicImg") %>
       <% end %>
     </div>
-    <div>
-      <p> People following me </p>
-      <% current_user.followers.each do |u| %>
-        <%= u.email %>
-      <% end %>
-    </div>
-  <% end %>  
-
+  </div>
   <% if @user == current_user %>
-    <%= button_to "Edit profile", edit_user_registration_path %>
-  <% elsif current_user %>
-    <%= render 'users/follow_button', user: @user %>
-  <% end %>
-  <div id="return"><button onclick="history.back()">Back</button></div>
+      <%= button_to "Edit profile", edit_user_registration_path, method: :get, id:"editButton" %>
+    <% elsif current_user %>
+      <%= render 'users/follow_button', user: @user %>
+    <% end %>
+    <div id="return"><button onclick="history.back()">Back</button></div>
 </div>

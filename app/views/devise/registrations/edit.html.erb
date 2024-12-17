@@ -1,4 +1,3 @@
-
 <%= stylesheet_link_tag "UserProfileEdit" %>
 <script >
   function checkpassword(){
@@ -18,6 +17,16 @@
   <%= render "devise/shared/error_messages", resource: resource %>
   <div class="attributes">
     <div class = "properties">
+      <div class="field">
+        <div class="interactive">
+          <%= f.label :"Username:" %>
+          <% if @account_params then %>
+            <%= f.text_field :username, autofocus: true, value: @account_params[:username] %>
+          <%else%>
+            <%= f.text_field :username, autofocus: true, value: @user.username %>
+          <%end%>  
+        </div>
+      </div>
       <div class="field">
         <div class="interactive">
           <%= f.label :"email:" %>
@@ -64,7 +73,9 @@
       </div>
           <div id ="prof_pic">
         <label for="user_profile_picture">
-          <% if current_user.profile_picture.attached? %>
+          <% if @account_params then %>
+            <%= image_tag(@account_params[:profile_picture], id:"editProfPicImg") %>
+          <% elsif current_user.profile_picture.attached? %>
             <%= image_tag(current_user.profile_picture, id:"editProfPicImg") %>
           <% else %>
             <%= image_tag("/assets/empty-profile-picture.png", id:"editProfPicImg") %>

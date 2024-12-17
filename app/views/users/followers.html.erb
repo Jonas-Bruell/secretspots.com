@@ -1,0 +1,21 @@
+<%= stylesheet_link_tag "follow" %>
+<div>
+  <p><strong> Followers of <%= @user.username%></strong> </p>
+  <% @user.followers.each do |u| %>
+    <!-- Hier gewoon een profile partial renderen? -> wie maakt de profiles? -->
+    <div class="user">
+      <%if u.profile_picture.attached?%>
+        <%= link_to image_tag(u.profile_picture),user_path(u.id), method: :get%>
+      <%else%>
+        <%= link_to image_tag("/assets/empty-profile-picture.png"),user_path(u.id), method: :get%>
+      <%end%>
+      <%if u.username != nil%>
+        <div id="name"><strong><%= u.username %></strong></div> 
+      <%else%>
+        <div id="name"><strong><%= u.email %></strong></div> 
+      <%end%>
+    </div>
+    <br/>
+  <% end %>
+  <div id="return"><button onclick="history.back()">Back</button></div>
+</div>

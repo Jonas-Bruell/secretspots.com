@@ -32,6 +32,9 @@ Rails.application.routes.draw do
     post "users/follow", to: "users#follow"
     delete "users/unfollow", to: "users#unfollow"
 
+    get "users/:id/followers", to: "users#followers", as: "followers"
+    get "users/:id/following", to: "users#following", as: "following"
+
     # CRUD for adventures and secrets
     resources :users, only: [:show]
 

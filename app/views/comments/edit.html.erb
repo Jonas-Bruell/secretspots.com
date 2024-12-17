@@ -1,13 +1,24 @@
-<h1>Edit Your Comment</h1>
 
-<%= form_with model: [@secret, @comment], local: true do |form| %>
-  <div>
-    <%= form.label :content, 'Your Comment' %>
-    <%= form.text_area :content, rows: 3 %>
-  </div>
-  <div>
-    <%= form.submit 'Update Comment' %>
-  </div>
-<% end %>
+<%= stylesheet_link_tag 'comment_edit', media: 'all' %>
 
-<%= link_to 'Back to Secret', @secret %>
+
+<div class="edit-comment-container">
+  <h1 class="edit-comment-title">Edit Your Comment</h1>
+
+  <div class="edit-comment-form">
+    <%= form_with model: [@secret, @comment], local: true do |form| %>
+      <div class="edit-comment-form-group">
+        <%= form.label :content, 'Your Comment', class: 'edit-comment-form-label' %>
+        <%= form.text_area :content, rows: 5, class: 'edit-comment-form-textarea' %>
+      </div>
+      <div class="edit-comment-form-actions">
+        <%= form.submit 'Update Comment', class: 'btn btn-primary' %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="edit-comment-a">
+    <%= link_to 'Back to Secret', @secret, class: 'edit-comment-back-to-secret-link' %>
+  </div>
+</div>
+
