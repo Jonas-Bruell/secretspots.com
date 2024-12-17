@@ -78,12 +78,10 @@
 
           
           <% if current_user.profile_picture.attached? %>
-            <%= link_to image_tag(current_user.profile_picture), edit_user_registration_path  %>
+            <%= link_to image_tag(current_user.profile_picture), user_path(current_user)  %>
           <% else %>
-            <%= link_to image_tag("/empty-profile-picture.png"), edit_user_registration_path  %>
+            <%= link_to image_tag("/empty-profile-picture.png"), user_path(current_user)  %>
           <% end %>
-          
-          <%= link_to 'My Profile', user_path(current_user), class: "btn btn-primary ms-3" %>
 
           <%= button_to "Sign out", destroy_user_session_path, method: :delete %> 
 
