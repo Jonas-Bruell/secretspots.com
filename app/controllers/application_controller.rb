@@ -12,9 +12,9 @@ class ApplicationController < ActionController::Base
   end
 
   def set_locale
-     # I18n.locale = extract_locale || I18n.default_locale
-     I18n.locale = params[:locale] # || I18n.default_locale
-     @show_header = true
+    # I18n.locale = extract_locale || I18n.default_locale
+    I18n.locale = params[:locale] || I18n.default_locale
+    @show_header = true
   end
 
   def extract_locale
@@ -23,7 +23,6 @@ class ApplicationController < ActionController::Base
     parsed_locale.to_sym :
     nil
   end
-  @show_header = true # header here means the navbar, which we don't want on the login/signup page
 
   protected
 

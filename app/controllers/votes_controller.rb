@@ -17,7 +17,7 @@ class VotesController < ApplicationController
     end
   end
 
-  def destroy
+  def delete
     @vote = current_user.votes.find_by(comment: @comment)
 
     if @vote

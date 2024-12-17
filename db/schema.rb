@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_12_16_155622) do
+ActiveRecord::Schema[8.0].define(version: 2024_12_17_093634) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -76,12 +76,6 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_16_155622) do
     t.datetime "updated_at", null: false
   end
 
-
-  create_table "profiles", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "secret_tags", force: :cascade do |t|
     t.string "name"
     t.integer "secret_id", null: false
@@ -96,10 +90,10 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_16_155622) do
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "address"
     t.float "latitude"
     t.float "longitude"
     t.text "description"
+    t.string "address"
     t.index ["user_id"], name: "index_secrets_on_user_id"
   end
 
@@ -113,9 +107,19 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_16_155622) do
     t.datetime "updated_at", null: false
     t.string "provider"
     t.string "uid"
-    t.string "username", default: "", null: false
+    t.string "username"
     t.index ["email"], name: "index_users_on_email"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token"
+  end
+
+  create_table "votes", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "comment_id", null: false
+    t.integer "value", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["comment_id"], name: "index_votes_on_comment_id"
+    t.index ["user_id"], name: "index_votes_on_user_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
@@ -125,4 +129,6 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_16_155622) do
   add_foreign_key "comments", "users"
   add_foreign_key "secret_tags", "secrets"
   add_foreign_key "secrets", "users"
+  add_foreign_key "votes", "comments"
+  add_foreign_key "votes", "users"
 end
