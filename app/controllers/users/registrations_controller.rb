@@ -60,7 +60,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # Profile pictures: https://www.youtube.com/watch?v=fcoxyZ5mYfQ
   # If you have extra params to permit, append them to the sanitizer.
   def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: [:profile_picture])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:profile_picture, :username])
   end
 
   # The path used after sign up.
@@ -84,6 +84,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super
   end
   def after_update_path_for(resource)
-    sign_in_after_change_password? ? user_view_path(resource) : new_session_path(resource_name)
+    sign_in_after_change_password? ? user_path(resource) : new_session_path(resource_name)
   end
 end

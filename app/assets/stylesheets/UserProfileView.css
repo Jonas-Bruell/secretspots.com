@@ -53,14 +53,15 @@
     align-self: center;
 }
 
-#editButton{
+#editButton,.statsbutton{
     margin-left:0%;
     margin-top: 1%;
     border-radius: 10px;
     border-style: none;
     background-color: rgb(163, 163, 163);
+    width:fit-content;
 }
-#editButton:hover{
+#editButton:hover,.statsbutton:hover{
     background-color: rgb(134, 134, 134);
 }
 

@@ -70,7 +70,7 @@
 
       <div class="d-flex navbar-text">
         <% if user_signed_in? %> 
-          <div id="welcome"> Welcome <%= current_user.email %> </div>
+          <div id="welcome"> Welcome <%= current_user.username %> </div>
 
           <% if current_user.profile_picture.attached? %>
             <%= link_to image_tag(current_user.profile_picture) , user_path(current_user.id), method: :get,class:"user_profpic"  %>
