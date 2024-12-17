@@ -60,7 +60,7 @@ en:
 
   secrets:
     back-link: "Back to secrets"
-    destroy-link: "Destroy this secret"
+    destroy-link: "Delete this secret"
     edit-link: "Edit this secret"
     show-link: "Show this secret"
     new-link: "Create a new secret"

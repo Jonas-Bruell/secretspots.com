@@ -1,4 +1,7 @@
-<!-- anders <h2><%= t('.forgot_your_password') %></h2> -->
+<%= stylesheet_link_tag "sessions_form" %>
+<%= render "devise/shared/logoText"%>
+<div class="logInForm"> 
+<h2><%= t('.forgot_your_password') %></h2>
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>

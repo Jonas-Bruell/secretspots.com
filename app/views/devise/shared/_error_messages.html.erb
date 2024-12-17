@@ -1,4 +1,5 @@
-<!-- anders <% if resource.errors.any? %> -->
+<%= stylesheet_link_tag "Errors" %>
+<% if resource.errors.any? %>
   <div id="error_explanation" data-turbo-cache="false">
     <h2>
       <%= I18n.t("errors.messages.not_saved",

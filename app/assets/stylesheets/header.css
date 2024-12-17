@@ -6,7 +6,9 @@
 .navbar-brand{
     padding:5px;
 }
-
+#welcome{
+    margin-top: 3%;
+}
 
 .button_to{
     margin-left:8px;
@@ -14,7 +16,7 @@
 .container-fluid{
     height:10%;
 }
-a > img{
+.user_profpic > img{
     vertical-align: middle;
     height:50px;
     width:50px;

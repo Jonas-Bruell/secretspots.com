@@ -3,31 +3,38 @@
 <%= stylesheet_link_tag "UserProfileView" %>
 <div id="UserProfileOverview">
 <h2 id="title">Profile</h2>
-  <div class="property">
-      <label>Email:</label>
-      <div class = "field">
-          <%= @user.email%>
-      </div>
-  </div>
-  <div class="property">
-      <label >Number of secrets found:</label>
-      <div class="field_number"><%= @user.secrets.count %></div>
+<div class="attributes">
+  <div class="properties">
+    <div class="property">
+        <label>Email:</label>
+        <div class = "field">
+            <%= @user.email%>
+        </div>
+    </div>
+    <div class="property">
+        <label >Number of secrets found:</label>
+        <div class="field_number"><%= @user.secrets.count %></div>
+    </div>
+
+    <div class="property">
+      <label >Followers:</label>
+      <div class="field_number"><%= render "users/follower_count" %></div>
+    </div>
+    <div class="property">
+      <label >Following:</label>
+      <div class="field_number"><%= @user.followees.count %></div>
+    </div>
   </div>
 
-  <div class="property">
-    <label >Number of followers:</label>
-    <%= render "users/follower_count" %>
-    <label >Number of followees:</label>
-    <div class="field_number"><%= @user.followees.count %></div>
-  </div>
 
   <div class="property">
     <%= link_to "followers", followers_path %>
     <%= link_to "following", following_path %>
   </div>
 
+
   <% if @user == current_user %>
-    <%= button_to "Edit profile", edit_user_registration_path %>
+    <%= button_to "Edit profile", edit_user_registration_path, method: :get, id:"editButton" %>
   <% elsif current_user %>
     <%= render 'users/follow_button', user: @user %>
   <% end %>
