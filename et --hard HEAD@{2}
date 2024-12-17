@@ -1,0 +1,14 @@
+[33md45d212[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32myan[m[33m, [m[1;31morigin/test[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{0}: reset: moving to origin/main
+[33m84b894f[m[33m ([m[1;31morigin/yan[m[33m)[m HEAD@{1}: reset: moving to origin/yan
+[33m84b894f[m[33m ([m[1;31morigin/yan[m[33m)[m HEAD@{2}: commit: adding user profile, adding username, editing username still TODO, usernames are links to user pages
+[33m8c2414e[m[33m ([m[1;32mmain[m[33m)[m HEAD@{3}: checkout: moving from yan to yan
+[33m8c2414e[m[33m ([m[1;32mmain[m[33m)[m HEAD@{4}: merge main: Fast-forward
+[33mb2f9592[m HEAD@{5}: checkout: moving from main to yan
+[33m8c2414e[m[33m ([m[1;32mmain[m[33m)[m HEAD@{6}: pull origin main: Fast-forward
+[33m7f36135[m HEAD@{7}: checkout: moving from yan to main
+[33mb2f9592[m HEAD@{8}: checkout: moving from yan to yan
+[33mb2f9592[m HEAD@{9}: commit: comments creating, editing, deleting done
+[33m0586139[m HEAD@{10}: commit: Added comments to posts, allowed for deletion of your own comment, placed edit button but not functional yet
+[33m02394bc[m HEAD@{11}: checkout: moving from main to yan
+[33m7f36135[m HEAD@{12}: reset: moving to HEAD
+[33m7f36135[m HEAD@{13}: clone: from https://github.com/Jonas-Bruell/www.secretspots.com.git

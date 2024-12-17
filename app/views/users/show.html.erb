@@ -3,6 +3,12 @@
 <%= stylesheet_link_tag "UserProfileView" %>
 <div id="UserProfileOverview">
 <h2 id="title">Profile</h2>
+<div class="property">
+      <label>Username:</label>
+      <div class = "field">
+          <%= @user.username%>
+      </div>
+  </div>
   <div class="property">
       <label>Email:</label>
       <div class = "field">
@@ -29,16 +35,6 @@
   <div id="return"><button onclick="history.back()">Back</button></div>
 </div>
 
-
-<h1><%= @user.username %>'s Profile</h1>
-
-<% if @user.profile_picture.attached? %>
-  <div class="profile-picture">
-    <%= image_tag @user.profile_picture, alt: "Profile Picture", class: "profile-picture" %>
-  </div>
-<% else %>
-  <p>No profile picture available.</p>
-<% end %>
 
 <h2>Secrets Posted:</h2>
 
@@ -88,7 +84,7 @@
     <% end %>
   </div>
 <% else %>
-  <p>You haven't commented on any secrets yet.</p>
+  <p>This user hasn't commented on any secrets yet.</p>
 <% end %>
 
 <%= link_to 'Back to Home', root_path %>
