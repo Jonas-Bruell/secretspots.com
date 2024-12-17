@@ -1,7 +1,7 @@
 <%= turbo_frame_tag(dom_id(@user)) do %>
   <% if following?(@user) %>
-    <%= button_to "Unfollow", users_unfollow_path(id: @user.id), method: :delete %>
+    <%= button_to "Unfollow", users_unfollow_path(id: @user.id), method: :delete, id:"follow" %>
   <% else %>
-    <%= button_to "Follow", users_follow_path(id: @user.id), method: :post %>
+    <%= button_to "Follow", users_follow_path(id: @user.id), method: :post, id:"follow" %>
   <% end %>
 <% end %>
