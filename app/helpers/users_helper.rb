@@ -9,4 +9,19 @@ module UsersHelper
   def dom_id_for_follower(follower)
     dom_id(follower)
   end
+
+  def update_following_count_and_button
+    respond_to do |format|
+      format.turbo_stream do
+        render turbo_stream: [
+          turbo_stream.replace(dom_id_for_follower(@user),
+            partial: 'users/follow_button',
+            locals: { user: @user }),
+          turbo_stream.update("#{@user.id}-follower-count",
+            partial: 'users/follower_count',
+            locals: { user: @user })
+          ]
+      end
+    end
+  end
 end
