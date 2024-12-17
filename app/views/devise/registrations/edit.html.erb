@@ -64,7 +64,12 @@
       </div>
           <div id ="prof_pic">
         <label for="user_profile_picture">
-          <%= image_tag(current_user.profile_picture, id:"editProfPicImg") %>
+          <% if current_user.profile_picture.attached? %>
+            <%= image_tag(current_user.profile_picture, id:"editProfPicImg") %>
+          <% else %>
+            <%= image_tag("/assets/empty-profile-picture.png", id:"editProfPicImg") %>
+          <% end %>
+          
         </label>
         <%= f.file_field  :profile_picture %>
       </div>

@@ -16,13 +16,30 @@
 
   <div class="property">
     <label >Number of followers:</label>
-    <div class="field_number"><%= @user.followers.count %></div>
+    <%= render "users/follower_count" %>
     <label >Number of followees:</label>
     <div class="field_number"><%= @user.followees.count %></div>
   </div>
 
   <% if @user == current_user %>
-    <%= button_to "Edit profile", edit_user_registration_path, method: :get, id:"editButton" %>
+    <!-- TODO -->
+    <p>code voor in een followers/followee page</p>
+    <div>
+      <p> People I follow </p>
+      <% current_user.followees.each do |u| %>
+        <%= u.email %>
+      <% end %>
+    </div>
+    <div>
+      <p> People following me </p>
+      <% current_user.followers.each do |u| %>
+        <%= u.email %>
+      <% end %>
+    </div>
+  <% end %>  
+
+  <% if @user == current_user %>
+    <%= button_to "Edit profile", edit_user_registration_path %>
   <% elsif current_user %>
     <%= render 'users/follow_button', user: @user %>
   <% end %>
