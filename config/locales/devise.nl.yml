@@ -3,7 +3,7 @@
 nl:
   devise:
     confirmations:
-      confirmed: "Uw e-mailadres is succesvol bevestigd."
+      confirmed: "Je e-mailadres is succesvol bevestigd."
       send_instructions: "Je ontvangt over een paar minuten een e-mail met instructies om je e-mailadres te bevestigen."
       send_paranoid_instructions: "Als je e-mailadres bestaat in onze database, ontvang je binnen enkele minuten een e-mail met instructies om je e-mailadres te bevestigen."
     failure:
