@@ -21,22 +21,10 @@
     <div class="field_number"><%= @user.followees.count %></div>
   </div>
 
-  <% if @user == current_user %>
-    <!-- TODO -->
-    <p>code voor in een followers/followee page</p>
-    <div>
-      <p> People I follow </p>
-      <% current_user.followees.each do |u| %>
-        <%= u.email %>
-      <% end %>
-    </div>
-    <div>
-      <p> People following me </p>
-      <% current_user.followers.each do |u| %>
-        <%= u.email %>
-      <% end %>
-    </div>
-  <% end %>  
+  <div class="property">
+    <%= link_to "followers", followers_path %>
+    <%= link_to "following", following_path %>
+  </div>
 
   <% if @user == current_user %>
     <%= button_to "Edit profile", edit_user_registration_path %>
