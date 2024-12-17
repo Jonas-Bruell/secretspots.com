@@ -23,39 +23,32 @@ class SecretsController < ApplicationController
 
   # GET /secrets/new
   def new
-    # @show_header = true
     @secret = Secret.new
+    @secret.secret_tags.build # Builds tags for the form
   end
 
-  # GET /secrets/1/edit
-  def edit
-  end
-
-  # POST /secrets or /secrets.json
   def create
-    @secret = Secret.new(secret_params)
-    @secret.user_id = current_user.id
-    respond_to do |format|
-      if @secret.save
-        format.html { redirect_to @secret, notice: "Secret was successfully created." }
-        format.json { render :show, status: :created, location: @secret }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @secret.errors, status: :unprocessable_entity }
-      end
+    Rails.logger.debug "DEBUG: Incoming Parameters -> #{params.inspect}"
+    @secret = current_user.secrets.new(secret_params) # Assign current_user
+
+    if @secret.save
+      redirect_to @secret, notice: 'Secret was successfully created.'
+    else
+      Rails.logger.debug "DEBUG: Secret Errors -> #{@secret.errors.full_messages}"
+      Rails.logger.debug "DEBUG: Secret Tags -> #{params[:secret][:secret_tags_attributes]}"
+      render :new
     end
   end
 
-  # PATCH/PUT /secrets/1 or /secrets/1.json
+
+  def edit
+  end
+
   def update
-    respond_to do |format|
-      if @secret.update(secret_params)
-        format.html { redirect_to @secret, notice: "Secret was successfully updated." }
-        format.json { render :show, status: :ok, location: @secret }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @secret.errors, status: :unprocessable_entity }
-      end
+    if @secret.update(secret_params)
+      redirect_to @secret, notice: 'Secret was successfully updated.'
+    else
+      render :edit
     end
   end
 
@@ -77,6 +70,7 @@ class SecretsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def secret_params
-      params.require(:secret).permit(:name, :image, :body, :latitude, :longitude, :address)
+      params.require(:secret).permit(:name, :description, :latitude, :longitude, :address, :image,
+                                     secret_tags_attributes: [:id, :name, :_destroy])
     end
 end
