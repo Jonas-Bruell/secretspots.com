@@ -1,6 +1,8 @@
 class RelationshipsController < ApplicationController
   before_action :set_relationship, only: %i[ show ]
 
+  def show; end
+
   def index
     @relationships = User.all
   end
