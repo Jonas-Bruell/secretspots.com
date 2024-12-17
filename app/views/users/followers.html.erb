@@ -10,7 +10,7 @@
         <%= link_to image_tag("/assets/empty-profile-picture.png"),user_path(u.id), method: :get%>
       <%end%>
       <%if u.username != nil%>
-        <div id="name"><strong><%= u.username id:"name"%></strong></div> 
+        <div id="name"><strong><%= u.username %></strong></div> 
       <%else%>
         <div id="name"><strong><%= u.email %></strong></div> 
       <%end%>

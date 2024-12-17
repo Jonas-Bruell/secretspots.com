@@ -53,7 +53,7 @@
     align-self: center;
 }
 
-#editButton,.statsbutton{
+#editButton,.statsbutton,#follow{
     margin-left:0%;
     margin-top: 1%;
     border-radius: 10px;
@@ -61,7 +61,7 @@
     background-color: rgb(163, 163, 163);
     width:fit-content;
 }
-#editButton:hover,.statsbutton:hover{
+#editButton:hover,.statsbutton:hover,#follow:hover{
     background-color: rgb(134, 134, 134);
 }
 
