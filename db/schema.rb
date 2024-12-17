@@ -76,6 +76,12 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_16_155622) do
     t.datetime "updated_at", null: false
   end
 
+
+  create_table "profiles", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "secret_tags", force: :cascade do |t|
     t.string "name"
     t.integer "secret_id", null: false
@@ -107,6 +113,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_16_155622) do
     t.datetime "updated_at", null: false
     t.string "provider"
     t.string "uid"
+    t.string "username"
     t.index ["email"], name: "index_users_on_email"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token"
   end
