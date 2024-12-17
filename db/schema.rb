@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_12_17_103813) do
+ActiveRecord::Schema[8.0].define(version: 2024_12_17_201027) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -65,8 +65,17 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_17_103813) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "edited", default: false
+    t.integer "cached_votes_up"
+    t.integer "cached_votes_down"
     t.index ["secret_id"], name: "index_comments_on_secret_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "friends", force: :cascade do |t|
+    t.integer "follower_id"
+    t.integer "followee_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -112,9 +121,25 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_17_103813) do
     t.datetime "updated_at", null: false
     t.string "provider"
     t.string "uid"
-    t.string "username"
+    t.string "username", default: "", null: false
     t.index ["email"], name: "index_users_on_email"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token"
+  end
+
+  create_table "votes", force: :cascade do |t|
+    t.string "votable_type"
+    t.integer "votable_id"
+    t.string "voter_type"
+    t.integer "voter_id"
+    t.boolean "vote_flag"
+    t.string "vote_scope"
+    t.integer "vote_weight"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope"
+    t.index ["votable_type", "votable_id"], name: "index_votes_on_votable"
+    t.index ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope"
+    t.index ["voter_type", "voter_id"], name: "index_votes_on_voter"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
