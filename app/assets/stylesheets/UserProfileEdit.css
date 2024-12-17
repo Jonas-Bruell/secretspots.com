@@ -1,0 +1,100 @@
+@import "UserProfile.css";
+
+.field{
+    margin-bottom:2%;
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 1%;
+    background-color: rgb(151, 151, 151);
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.interactive{
+    display: flex;
+    flex-direction: row;
+    white-space: nowrap;
+    flex-basis: 50%;
+    justify-content: space-between;
+}
+.info{
+    display: flex;
+    flex-direction: row;
+}
+#newpssword{
+    align-self: right;
+}
+em,i{
+    white-space: pre;
+}
+input {
+    background-color:rgb(233, 231, 222);
+    padding:1%;
+    border-style: none;
+    border-radius:5px;
+    width:fit-content;
+    height:fit-content;
+}
+
+@media screen and (max-width:1400px) {
+    .info{
+        flex-direction: column;
+    }
+
+}
+
+@media screen and (max-width:768px){
+    .properties{
+        width: 100%;
+    }
+}
+@media screen and (max-width:540px) {
+    i,em,.interactive{
+        white-space: inherit;
+    }
+
+    
+}
+@media screen and (max-width:390px) {
+    input{
+        width:100%;
+    }
+}
+
+
+#prof_pic > label:hover{
+    cursor: pointer;
+}
+
+
+#prof_pic > input {
+    display: none;
+}
+
+.actions{
+    text-align: right;
+}
+.actions > input{
+    
+    background-color: azure;
+}
+.actions > input:hover, #cancel > form > button:hover{
+    background-color: rgb(184, 182, 182)
+}
+#cancel{
+    text-align: right;
+    margin-top: 1%;
+}
+#cancel > form > button{
+    border-style: none;
+    border-radius:5px;
+    background-color: azure;
+}
+
+#passwordEdit{
+    margin-top: 7.5%;
+}
+.field_with_errors{
+    display: inline-block;
+}

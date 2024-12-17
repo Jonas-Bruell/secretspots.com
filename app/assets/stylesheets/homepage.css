@@ -1,0 +1,36 @@
+/* General Heading Styles */
+#main-heading {
+    text-align: center;
+    color: #007BFF;
+    font-size: 3em;
+    margin-top: 20px;
+  }
+  
+  /* Map Container */
+  #map {
+    width: 80%;
+    height: 500px;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+  }
+  
+  /* Slider Section */
+  #slider-container {
+    text-align: center;
+    margin: 10px;
+  }
+  
+  #slider-container label {
+    font-size: 1.2em;
+    color: #555;
+  }
+  
+  #radiusSlider {
+    margin-left: 10px;
+  }
+  
+  #radiusValue {
+    font-size: 1.2em;
+    color: #007BFF;
+  }
+  

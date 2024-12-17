@@ -38,6 +38,8 @@ en:
     secrets: "Secrets"
     adventure: "Adventure"
     adventures: "Adventures"
+    friend: "Friend"
+    friends: "Friends"
 
   home:
     header:
@@ -55,12 +57,14 @@ en:
           one: "One error prohibited this secret from being saved:"
           other: "%{count} errors prohibited this secret from being saved:"
       submit: "Submit"
+      create: "Create secret" 
     edit: 
       title: "Edit"
       edit: "Editing secret"
     new:
       title: "New"
       new: "New secret"
+      create: "Create secret"
 
   adventures:
     back-link: "Back to adventures"

@@ -1,0 +1,82 @@
+#UserProfileOverview {
+    margin-top: 5%;
+    padding:2.5%;
+    margin-left: 8%;
+    margin-right:8%;
+    text-align: left;
+    height:100%;
+    color:black;
+    border-radius:10px;
+    background-color: rgb(199, 197, 197);
+}
+.attributes{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+img{
+    height: 10vw;
+    width:10vw;
+    vertical-align: middle;
+    border-radius: 50%;
+}
+#prof_pic{
+    height: fit-content;
+    margin-top: -5%;
+    padding:1%;
+    border-style: dashed;
+    border-radius: 10px;;
+    border-color:rgb(139, 139, 139);
+    background-color: rgb(178, 178, 179);
+}
+
+@media screen and (max-width:768px) {
+    .attributes{
+        flex-direction: column-reverse;
+    }
+    #prof_pic{
+        margin-top: 0%;
+        margin-bottom: 1%;
+        align-self: center;
+    }
+    img{
+        height: 20vw;
+        width:20vw;
+    }
+}
+.properties{
+    display:flex;
+    flex-direction: column;
+    width: 83%;
+}
+label{
+    padding-top:5px;
+    text-align: left;
+    font-weight: 500;
+}
+
+
+#title{
+    text-align: center;
+}
+
+#return > button{
+    text-decoration: none;
+    color:black;
+    background-color: rgb(163, 163, 163);
+    padding: 0.5%;
+    padding-left: 2%;
+    padding-right: 2%;
+    border-radius: 10px;
+    border-style: none;
+}
+#return{
+    margin-top: 4%;
+}
+#return > button:hover{
+    background-color: rgb(134, 134, 134);
+}
+
+#error{
+    color:red;
+}

@@ -1,3 +1,123 @@
-<h1><%= t('hello_world') %></h1>
-<p>Hier hoort een google-maps kaart te staan, maar ik weet nog niet hoe dit moet</p>
-<%= render "secrets/List"%>
+<%= stylesheet_link_tag 'application', media: 'all' %>
+<%= stylesheet_link_tag 'homepage', media: 'all' %>
+
+<h1 class="page-title">
+  <%= t('global.secrets') %>
+</h1>
+
+<div id="map" class="map-container"></div>
+
+
+<div class="radius-adjustment">
+  <label for="radiusSlider" class="radius-label">Adjust radius (km):</label>
+  <input id="radiusSlider" type="range" min="1" max="10" value="1" step="0.1" class="radius-slider" 
+         oninput="updateRadius(this.value)">
+  <span id="radiusValue" class="radius-value">1 km</span>
+</div>
+
+
+
+
+<script>
+  let map;
+  let markers = [];
+  let circle;
+  let mapCenter = { lat: 50.8503, lng: 4.3517 }; // Default to Brussels
+  let allSecrets = [];
+
+  function initMap() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          mapCenter = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+          };
+          createMap();
+        },
+        () => {
+          console.warn("Geolocation failed. Using default center.");
+          createMap();
+        }
+      );
+    } else {
+      console.warn("Geolocation not supported. Using default center.");
+      createMap();
+    }
+  }
+
+  function createMap() {
+    map = new google.maps.Map(document.getElementById("map"), {
+      center: mapCenter,
+      zoom: 12,
+    });
+
+    circle = new google.maps.Circle({
+      strokeColor: "#2A7FFF",
+      strokeOpacity: 0.8,
+      strokeWeight: 2,
+      fillColor: "#2A7FFF",
+      fillOpacity: 0.2,
+      map: map,
+      center: mapCenter,
+      radius: 1000,
+    });
+
+    fetch("<%= secrets_map_data_path %>")
+      .then((response) => response.json())
+      .then((data) => {
+        allSecrets = data;
+        addMarkers();
+      })
+      .catch((error) => console.error("Error fetching map data:", error));
+  }
+
+  function updateRadius(value) {
+    const radiusInMeters = value * 1000;
+    circle.setRadius(radiusInMeters);
+    document.getElementById("radiusValue").textContent = `${value} km`;
+
+    addMarkers();
+  }
+
+  function addMarkers() {
+    markers.forEach((marker) => marker.setMap(null));
+    markers = [];
+
+    allSecrets.forEach((secret) => {
+      const position = { lat: parseFloat(secret.latitude), lng: parseFloat(secret.longitude) };
+      const distance = google.maps.geometry.spherical.computeDistanceBetween(
+        new google.maps.LatLng(position.lat, position.lng),
+        circle.getCenter()
+      );
+
+      const markerOptions = {
+        position: position,
+        map: map,
+        title: secret.name,
+        icon: distance > circle.getRadius() ? {
+          path: google.maps.SymbolPath.CIRCLE,
+          scale: 6,
+          fillColor: "#FF0000",
+          fillOpacity: 1,
+          strokeColor: "#FF0000",
+          strokeWeight: 1,
+        } : undefined,
+      };
+
+      const marker = new google.maps.Marker(markerOptions);
+
+      marker.addListener("click", () => {
+        if (distance <= circle.getRadius()) {
+          window.location.href = `/secrets/${secret.id}`;
+        } else {
+          console.warn("Secret is outside the radius, cannot navigate.");
+        }
+      });
+
+      markers.push(marker);
+    });
+  }
+</script>
+
+<script async src="https://maps.googleapis.com/maps/api/js?key=<%= Rails.application.credentials.dig('GOOGLE_MAPS_API_KEY') %>&callback=initMap&libraries=geometry"></script>

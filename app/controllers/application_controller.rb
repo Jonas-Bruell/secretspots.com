@@ -6,14 +6,15 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   # https://www.youtube.com/watch?v=4m64FHUrEhg
-
+  I18n.default_locale = :en
   def default_url_options
     { locale: I18n.locale }
   end
 
   def set_locale
-    # I18n.locale = extract_locale || I18n.default_locale
-    I18n.locale = params[:locale] || I18n.default_locale
+     # I18n.locale = extract_locale || I18n.default_locale
+     I18n.locale = params[:locale] # || I18n.default_locale
+     @show_header = true
   end
 
   def extract_locale
@@ -22,6 +23,7 @@ class ApplicationController < ActionController::Base
     parsed_locale.to_sym :
     nil
   end
+  @show_header = true # header here means the navbar, which we don't want on the login/signup page
 
   protected
 
