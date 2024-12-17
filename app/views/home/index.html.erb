@@ -5,15 +5,32 @@
   <%= t('global.secrets') %>
 </h1>
 
-<div id="map" class="map-container"></div>
+
+<div id="map" class="map-container" style="position: relative;"></div>
 
 
-<div class="radius-adjustment">
-  <label for="radiusSlider" class="radius-label">Adjust radius (km):</label>
-  <input id="radiusSlider" type="range" min="1" max="10" value="1" step="0.1" class="radius-slider" 
-         oninput="updateRadius(this.value)">
-  <span id="radiusValue" class="radius-value">1 km</span>
+<!-- Radius Adjustment and Filter Section -->
+<div class="controls-container">
+  <!-- Radius Adjustment Section -->
+  <div class="radius-adjustment">
+    <label for="radiusSlider" class="radius-label">Adjust Radius (km):</label>
+    <input id="radiusSlider" type="range" min="1" max="10" value="1" step="0.1" class="radius-slider" 
+           oninput="updateRadius(this.value)">
+    <span id="radiusValue" class="radius-value">1 km</span>
+  </div>
+
+  <div class="filter-container">
+    <button id="filterButton" class="btn-action">Filter</button>
+
+    <div id="filterDropdown" class="filter-dropdown">
+      <label><input type="checkbox" name="tag" value="Architecture"> Food</label>
+      <label><input type="checkbox" name="tag" value="Landscape"> Nature</label>
+      <label><input type="checkbox" name="tag" value="Street-art"> Culture</label>
+      <label><input type="checkbox" name="tag" value="Not-tagged"> History</label>
+    </div>
+  </div>
 </div>
+
 
 
 
@@ -120,4 +137,26 @@
   }
 </script>
 
-<script async src="https://maps.googleapis.com/maps/api/js?key=<%= Rails.application.credentials.dig('GOOGLE_MAPS_API_KEY') %>&callback=initMap&libraries=geometry"></script>
+<script async src="https://maps.googleapis.com/maps/api/js?key=<%= Rails.application.credentials.dig('GOOGLE_MAPS_API_KEY') %>&callback=initMap&libraries=places"></script>
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const filterButton = document.getElementById("filterButton");
+    const filterDropdown = document.getElementById("filterDropdown");
+
+    // Toggle filter dropdown visibility
+    filterButton.addEventListener("click", () => {
+      filterDropdown.style.display = (filterDropdown.style.display === "none" || filterDropdown.style.display === "")
+        ? "block"
+        : "none";
+    });
+
+    // Close dropdown if clicking outside
+    document.addEventListener("click", (event) => {
+      if (!filterButton.contains(event.target) && !filterDropdown.contains(event.target)) {
+        filterDropdown.style.display = "none";
+      }
+    });
+  });
+</script>
