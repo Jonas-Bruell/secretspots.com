@@ -57,6 +57,7 @@ en:
           one: "One error prohibited this secret from being saved:"
           other: "%{count} errors prohibited this secret from being saved:"
       submit: "Submit"
+      create: "Create secret" 
     edit: 
       title: "Edit"
       edit: "Editing secret"
