@@ -77,6 +77,6 @@ class SecretsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def secret_params
-      params.require(:secret).permit(:name, :image, :description, :latitude, :longitude, :address)
+      params.require(:secret).permit(:name, :image, :body, :latitude, :longitude, :address)
     end
 end

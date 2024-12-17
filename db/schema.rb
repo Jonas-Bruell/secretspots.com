@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_12_16_155622) do
+ActiveRecord::Schema[8.0].define(version: 2024_12_14_234219) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -69,6 +69,14 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_16_155622) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+
+  create_table "friends", force: :cascade do |t|
+    t.integer "follower_id"
+    t.integer "followee_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "secret_tags", force: :cascade do |t|
     t.string "name"
     t.integer "secret_id", null: false
@@ -76,6 +84,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_16_155622) do
     t.datetime "updated_at", null: false
     t.index ["secret_id"], name: "index_secret_tags_on_secret_id"
   end
+
 
   create_table "secrets", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -100,6 +109,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_16_155622) do
     t.datetime "updated_at", null: false
     t.string "provider"
     t.string "uid"
+    t.string "username"
     t.index ["email"], name: "index_users_on_email"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token"
   end

@@ -2,6 +2,7 @@
 #TopBorder{
     background-color: darkred;
     height:30px;
+    width: 110%;
 }
 #SignIn_OutNotice{
     background-color: rgb(159, 236, 159);

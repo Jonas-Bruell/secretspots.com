@@ -1,10 +1,6 @@
 @import "UserProfile.css";
 
 
-.properties{
-    display:flex;
-    flex-direction: column;
-}
 .property{
     margin-bottom: 2%;
     width: 50%;
@@ -16,12 +12,44 @@
     border-radius: 5px;
     box-sizing: border-box;
 }
+label{
+    flex-basis:44%;
+}
+@media screen and (max-width:1400px) {
+    label{
+        flex-basis: 52%;
+    }
+}
+
+@media screen and (max-width:1200px) {
+    .property{
+        width:60%;
+    }
+ 
+}
+@media screen and (max-width:992px){
+    .property{
+        width:80%;
+    }
+}
+@media screen and (max-width:768px){
+    .property{
+        width:100%;
+    }
+    #UserProfileOverview{
+        margin-left: 6%;
+        margin-right: 6%;
+    }
+}
+
 .field, .field_number{
     background-color:rgb(233, 231, 222);
     padding:1%;
     border-style: none;
     border-radius:5px;
     width:fit-content;
+    height: fit-content;
+    align-self: center;
 }
 
 #editButton{

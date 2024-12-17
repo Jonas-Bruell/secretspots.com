@@ -8,6 +8,23 @@ class User < ApplicationRecord
   has_one_attached :profile_picture
   has_many :secrets
 
+  # https://youtu.be/1cuEoc59cV8?si=jGSFQwDT5Z9Z_JI9
+  has_many :followed_users,
+            foreign_key: :follower_id,
+            class_name: 'Friend',
+            dependent: :destroy
+  has_many :followees,
+            through: :followed_users,
+            dependent: :destroy
+
+  has_many :following_users,
+            foreign_key: :followee_id,
+            class_name: 'Friend',
+            dependent: :destroy
+  has_many :followers,
+            through: :following_users,
+            dependent: :destroy
+
   # https://youtu.be/CnZnwV38cjo?si=RIWOtrHfye9xI44s
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
