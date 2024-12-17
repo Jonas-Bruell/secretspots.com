@@ -47,13 +47,16 @@ input {
         flex-direction: column;
     }
 }
+@media screen and (max-width:768px){
+    .properties{
+        width: 100%;
+    }
+}
 @media screen and (max-width:540px) {
-    i,em{
+    i,em,.interactive{
         white-space: inherit;
     }
-    .interactive{
-        white-space: inherit;
-    }
+
     
 }
 @media screen and (max-width:390px) {

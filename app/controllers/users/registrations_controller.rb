@@ -80,8 +80,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
     puts current_user.secrets.count
   end
   def update
-    puts account_update_params
     @account_params = account_update_params
     super
+  end
+  def after_update_path_for(resource)
+    sign_in_after_change_password? ? user_view_path(resource) : new_session_path(resource_name)
   end
 end
