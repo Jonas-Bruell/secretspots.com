@@ -14,11 +14,6 @@
           <%= link_to t('global.secrets'), secrets_path, class:"nav-link active" %>
         </li>
 
-        <!-- Followers list -->
-        <li class="nav-item">
-          <%= link_to t('global.volgers'), root_path , class:"nav-link active" %>
-        </li>
-
         <!-- Choose language -->
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -66,15 +61,17 @@
       </ul>
 
       <!-- Searchbar -->
+      <!--
       <form class="d-flex" role="search" action="/home/search"%>
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
+      -->
 
       <div class="d-flex navbar-text">
         <% if user_signed_in? %> 
           
-          <div> Welcome <%= current_user.email %> </div>
+          <div> <%= t('.welcome') %> <%= current_user.email %> </div>
           
           <% if current_user.profile_picture.attached? %>
             <%= link_to image_tag(current_user.profile_picture), user_view_path, method: :get  %>
@@ -82,12 +79,12 @@
             <%= link_to image_tag("/assets/empty-profile-picture.png"), user_view_path, method: :get  %>
           <% end %>
 
-          <%= button_to "Sign out", destroy_user_session_path, method: :delete %> 
+          <%= button_to t('.log-out'), destroy_user_session_path, method: :delete %> 
 
         <% else %>
 
-          <%= button_to "Log in", new_user_session_path,method: :get %> 
-          <%= button_to "Sign up", new_user_registration_path,method: :get %>
+          <%= button_to t('.log-in'), new_user_session_path,method: :get %> 
+          <%= button_to t('.sign-up'), new_user_registration_path,method: :get %>
         <% end %>
       </div>
 
