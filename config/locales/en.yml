@@ -33,7 +33,7 @@ en:
   global:
     user: "User:"
     name: "Name:"
-    body: "Discription:"
+    body: "Description:"
     secret: "Secret"
     secrets: "Secrets"
     adventure: "Adventure"
@@ -47,7 +47,7 @@ en:
 
   secrets:
     back-link: "Back to secrets"
-    destroy-link: "Destroy this secret"
+    destroy-link: "Delete this secret"
     edit-link: "Edit this secret"
     show-link: "Show this secret"
     new-link: "New secret"
