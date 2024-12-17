@@ -1,0 +1,9 @@
+<div>
+  <p> Followed by <%= @user.email%> </p>
+  <% @user.followees.each do |u| %>
+    <!-- Hier gewoon een profile partial renderen? -> wie maakt de profiles? -->
+    <%= u.email %>
+    <br/>
+  <% end %>
+  <div id="return"><button onclick="history.back()">Back</button></div>
+</div>
