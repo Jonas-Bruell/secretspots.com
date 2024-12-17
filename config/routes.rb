@@ -28,9 +28,9 @@ Rails.application.routes.draw do
     # Defines the root path route ("/")
     root "home#index"
 
-    # Following / friending
-    post "profile/follow", to: "profile#follow"
-    delete "profile/unfollow", to: "profile#unfollow"
+    # Following
+    post "users/follow", to: "users#follow"
+    delete "users/unfollow", to: "users#unfollow"
 
     # CRUD for adventures and secrets
     resources :users, only: [:show]

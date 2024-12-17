@@ -38,8 +38,8 @@ nl:
     secrets: "Pareltjes"
     adventure: "Avontuur"
     adventures: "Avonturen"
-    friend: "Vriend"
-    friends: "Vrienden"
+    follower: "Volger"
+    followers: "Volgers"
       
   home:
     header:

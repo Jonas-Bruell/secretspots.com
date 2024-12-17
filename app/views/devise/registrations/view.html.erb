@@ -17,7 +17,11 @@
         </div>
     </div>
     <div id= "prof_pic">
-        <%= image_tag(current_user.profile_picture)%>
+        <% if current_user.profile_picture.attached? %>
+            <%= image_tag(current_user.profile_picture) %>
+          <% else %>
+            <%= image_tag("/assets/empty-profile-picture.png") %>
+          <% end %>
     </div>
 </div>
     <%= button_to "Edit profile", edit_user_registration_path, method: :get, id:"editButton" %>
