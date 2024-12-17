@@ -81,11 +81,6 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_17_103813) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "profiles", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "secret_tags", force: :cascade do |t|
     t.string "name"
     t.integer "secret_id", null: false
