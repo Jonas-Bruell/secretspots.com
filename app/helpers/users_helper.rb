@@ -10,7 +10,7 @@ module UsersHelper
     dom_id(follower)
   end
 
-  def update_following__count_and_button
+  def update_following_count_and_button
     respond_to do |format|
       format.turbo_stream do
         render turbo_stream: [
