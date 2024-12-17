@@ -3,8 +3,10 @@ class Secret < ApplicationRecord
   has_one_attached :image
   has_many :comments, dependent: :destroy
 
+
+
   has_many :secret_tags, dependent: :destroy
-  accepts_nested_attributes_for :secret_tags
+  accepts_nested_attributes_for :secret_tags, allow_destroy: true
   after_create :add_default_tag_if_missing
 
 # https://www.youtube.com/watch?v=nqAnftA8LbA
