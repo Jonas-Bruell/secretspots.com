@@ -3,7 +3,7 @@
 .field{
     margin-bottom:2%;
     display:flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: flex-start;
     padding: 1%;
     background-color: rgb(151, 151, 151);
@@ -15,12 +15,15 @@
     display: flex;
     flex-direction: row;
     white-space: nowrap;
-    flex-basis: 42%;
+    flex-basis: 50%;
     justify-content: space-between;
 }
 .info{
     display: flex;
     flex-direction: row;
+}
+#newpssword{
+    align-self: right;
 }
 em,i{
     white-space: pre;
@@ -33,20 +36,14 @@ input {
     width:fit-content;
     height:fit-content;
 }
+
 @media screen and (max-width:1400px) {
-    .interactive{
-        flex-basis: 48%;
-    }
     .info{
         flex-direction: column;
     }
 
 }
-@media screen and (max-width:1200px) {
-    .field{
-        flex-direction: column;
-    }
-}
+
 @media screen and (max-width:768px){
     .properties{
         width: 100%;
@@ -66,7 +63,7 @@ input {
 }
 
 
-label:hover{
+#prof_pic > label:hover{
     cursor: pointer;
 }
 
