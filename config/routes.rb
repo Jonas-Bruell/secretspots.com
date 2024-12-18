@@ -11,22 +11,24 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
 
-  # Devise :: https://www.digitalocean.com/community/tutorials/how-to-set-up-user-authentication-with-devise-in-a-rails-7-application
-  # Profile picture :: https://www.youtube.com/watch?v=fcoxyZ5mYfQ
-  devise_for :users, controllers: {
-
-      omniauth_callbacks: 'users/omniauth_callbacks',
-      sessions: "users/sessions",
-      registrations: "users/registrations"
+  devise_for :users, only: :omnoauth_callbacks, controllers: {
+    omniauth_callbacks: 'users/omniauth_callbacks'
   }
-  devise_scope :user do
-    get "/user/view" => "users/registrations#view"
-  end
 
   # puts locale in the URL
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
     # Defines the root path route ("/")
     root "home#index"
+
+    # Devise :: https://www.digitalocean.com/community/tutorials/how-to-set-up-user-authentication-with-devise-in-a-rails-7-application
+    # Profile picture :: https://www.youtube.com/watch?v=fcoxyZ5mYfQ
+    devise_for :users, skip: :omniauth_callbacks, controllers: {
+      sessions: "users/sessions",
+      registrations: "users/registrations"
+    }
+    devise_scope :user do
+      get "/user/view" => "users/registrations#view"
+    end
 
     # Following
     post "users/follow", to: "users#follow"

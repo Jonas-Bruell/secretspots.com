@@ -107,6 +107,8 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    devise-i18n (1.12.1)
+      devise (>= 4.9.0)
     dotenv (3.1.6)
     dotenv-rails (3.1.6)
       dotenv (= 3.1.6)
@@ -358,6 +360,7 @@ DEPENDENCIES
   capybara
   debug
   devise (~> 4.9, >= 4.9.3)
+  devise-i18n
   dotenv-rails (~> 3.1)
   image_processing (~> 1.2)
   importmap-rails

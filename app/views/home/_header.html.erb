@@ -14,7 +14,10 @@
           <%= link_to t('global.secrets'), secrets_path, class:"nav-link active" %>
         </li>
 
-
+        <!-- Followers list -->
+        <li class="nav-item">
+          <%= link_to t('global.volgers'), root_path , class:"nav-link active" %>
+        </li>
 
         <!-- Choose language -->
         <li class="nav-item dropdown">
@@ -62,11 +65,11 @@
 
       </ul>
 
-     
+
 
       <div class="d-flex navbar-text">
         <% if user_signed_in? %> 
-          <div id="welcome"> Welcome <%= current_user.username %> </div>
+          <div id="welcome"> <%= t('.welcome') %> <%= current_user.username %> </div>
 
           <% if current_user.profile_picture.attached? %>
             <%= link_to image_tag(current_user.profile_picture) , user_path(current_user.id), method: :get,class:"user_profpic"  %>
@@ -75,12 +78,12 @@
 
           <% end %>
 
-          <%= button_to "Sign out", destroy_user_session_path, method: :delete %> 
+          <%= button_to t('.log-out'), destroy_user_session_path, method: :delete %> 
 
         <% else %>
 
-          <%= button_to "Log in", new_user_session_path,method: :get %> 
-          <%= button_to "Sign up", new_user_registration_path,method: :get %>
+          <%= button_to t('.log-in'), new_user_session_path,method: :get %> 
+          <%= button_to t('.sign-up'), new_user_registration_path,method: :get %>
         <% end %>
       </div>
 

@@ -31,38 +31,78 @@ nl:
   hello_world: "Hallo, wereld!"
 
   global:
-    user: "Gebruiker"
-    name: "Naam"
-    body: "Beschrijving"
+    user: "Gebruiker: "
+    name: "Naam: "
+    upload-image: "Upload foto: "
+    description: "Beschrijving: "
     secret: "Pareltje"
     secrets: "Pareltjes"
     adventure: "Avontuur"
     adventures: "Avonturen"
     follower: "Volger"
     followers: "Volgers"
-      
+    
+  comments:
+    edit:
+      your-comment: "Jouw opmerking"
+      update-comment: "Sla bewerkingen op"
+      back-to-secret: "Terug naar pareltje"
+
   home:
     header:
       language: "Taal"
+      welcome: "Welkom "
+      sign-up: "Registreren"
+      log-out: "Uitloggen"
+      log-in: "Inloggen"
+    index:
+      adjust-radius: "Pas radius aan (km):"
 
   secrets:
     back-link: "Terug naar pareltjes"
     destroy-link: "Vernietig dit pareltje"
     edit-link: "Bewerk dit pareltje"
     show-link: "Toon dit pareltje"
-    new-link: "Maak nieuw pareltje"
+    new-link: "Maak een nieuw pareltje"
     form:
       messages:
         errors:
           one: "Door één fout werd dit pareltje niet bewaard:"
           other: "Door %{count} fouten werd dit pareltje niet bewaard:"
-      submit: "Aanmaken"
+      select-tags: 'Selecteer tags:'
+      latitude: "Latitude:"
+      longitude: "Longitude:"
+      address: "Adres:"
+      create: "Maak pareltje" 
     edit: 
       title: "Bewerken"
       edit: "Bewerk dit pareltje"
     new:
       title: "Aanmaken"
       new: "Nieuw pareltje"
+      create: "Maak pareltje"
+    index:
+      no-description: "Geen beschrijving aanwezig."
+      created-by: "Gemaakt door: "
+      created-on: "Gemaakt op: "
+      first-secret: "Er zijn nog geen pareltjes beschikbaar. Wees de eerste om er een toe te voegen!"
+    show:
+      confirm-destroy: "Ben je zeker dat je dit wilt vernietigen?"
+      comments: "Opmerkingen: "
+      posted-on: "Gepubliceerd op "
+      confirm-delete: "Ben je zeker dat je deze opmerking wilt verwijderen?"
+      no-comments: "Er zijn nog geen reacties. Geef als eerste een opmerking!"
+      add-comment: "Plaats een nieuwe opmerking"
+      your-comment: "Jouw Opmerking: "
+      post-comment: "Publiceer opmerking"
+      edited: " (bewerkt)"
+      edit: "Bewerk"
+      delete: "Verwijder"
+      at: "om %H:%M"
+    secret:
+      no-image: "Geen afbeelding beschikbaar."
+      tags: "Tags"
+      no-tags: "Geen tags beschrikbaar."
 
   adventures:
     back-link: "Terug naar avonturen"

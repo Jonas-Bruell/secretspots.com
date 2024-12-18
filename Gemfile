@@ -71,6 +71,8 @@ gem "rails-i18n"
 # User authentication via devise
 # https://blog.appsignal.com/2023/07/12/an-introduction-to-devise-for-ruby-on-rails.html
 gem "devise", "~> 4.9", ">= 4.9.3"
+# https://github.com/tigrish/devise-i18n
+gem "devise-i18n"
 
 # Authentication via 3rd party services
 gem 'omniauth'

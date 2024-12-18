@@ -1,4 +1,81 @@
-/* General Heading Styles */
+/* Container for Radius and Filters */
+.controls-container {
+  display: flex;
+  align-items: center; /* Vertically align items */
+  justify-content: flex-start;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1200px; /* Align with the map's width */
+}
+
+/* Adjust Radius Section */
+.radius-adjustment {
+  margin-right: 20px; /* Space between radius and filter button */
+  display: flex;
+  align-items: center;
+}
+
+.radius-label {
+  font-size: 1.2em;
+  color: #555;
+  margin-right: 10px;
+}
+
+.radius-slider {
+  margin-right: 10px;
+}
+
+.radius-value {
+  font-size: 1.2em;
+  color: #007BFF;
+}
+
+/* Filter Container */
+.filter-container {
+  position: relative;
+}
+
+.btn-action {
+  background-color: #007BFF;
+  color: #FFF;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.btn-action:hover {
+  background-color: #0056b3;
+}
+
+/* Dropdown Styling */
+.filter-dropdown {
+  display: none;
+  position: absolute;
+  top: -5px; /* Align tags higher, same level as the button */
+  left: 110%; /* Push dropdown to the right of the button */
+  background-color: transparent;
+  white-space: nowrap;
+}
+
+.filter-dropdown label {
+  display: inline-block;
+  margin: 0 10px;
+  color: #555;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+.filter-dropdown input[type="checkbox"] {
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+
+
 #main-heading {
     text-align: center;
     color: #007BFF;
@@ -14,11 +91,57 @@
     border: 1px solid #ccc;
   }
   
-  /* Slider Section */
-  #slider-container {
-    text-align: center;
-    margin: 10px;
-  }
+
+/* Filter Button */
+#filterButton {
+  background-color: #007BFF;
+  color: #FFF;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+#filterButton:hover {
+  background-color: #0056b3;
+}
+
+/* Filter Options */
+#filterOptions {
+  border: 1px solid #DDD;
+  border-radius: 5px;
+  padding: 15px;
+  background-color: #F9F9F9;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+#filterOptions h3 {
+  margin: 0 0 10px;
+  font-size: 1.2em;
+}
+
+#filterOptions label {
+  display: block;
+  margin: 5px 0;
+  color: #555;
+  font-size: 1em;
+}
+
+
+/* Radius Slider Container */
+#slider-container {
+  margin: 10px auto;
+  padding: 10px;
+  border: 1px solid #DDD;
+  border-radius: 5px;
+  background-color: #F9F9F9;
+  width: 300px;
+}
+
   
   #slider-container label {
     font-size: 1.2em;

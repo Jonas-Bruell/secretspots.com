@@ -23,7 +23,7 @@ end
 private
 
   def add_default_tag_if_missing
-    self.secret_tags.create(name: 'not-tagged') if self.secret_tags.empty?
+    self.secret_tags.create(name: 'Not-tagged') if self.secret_tags.empty?
   end
 
 

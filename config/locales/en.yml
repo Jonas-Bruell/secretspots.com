@@ -31,9 +31,10 @@ en:
   hello_world: "Hello, world!"
 
   global:
-    user: "User:"
-    name: "Name:"
-    body: "Description:"
+    user: "User: "
+    name: "Name: "
+    upload-image: "Upload Image: "
+    description: "Discription: "
     secret: "Secret"
     secrets: "Secrets"
     adventure: "Adventure"
@@ -41,22 +42,37 @@ en:
     follower: "Follower"
     followers: "Followers"
 
+  comments:
+    edit:
+      your-comment: "Your Comment"
+      update-comment: "Update Comment"
+      back-to-secret: "Back to Secret"
+
   home:
     header:
       language: "Language"
+      welcome: "Welcome "
+      sign-up: "Sign up"
+      log-out: "Log out"
+      log-in: "Log in"
+    index:
+      adjust-radius: "Adjust radius (km):"
 
   secrets:
     back-link: "Back to secrets"
     destroy-link: "Delete this secret"
     edit-link: "Edit this secret"
     show-link: "Show this secret"
-    new-link: "New secret"
+    new-link: "Create a new secret"
     form:
       messages:
         errors:
           one: "One error prohibited this secret from being saved:"
           other: "%{count} errors prohibited this secret from being saved:"
-      submit: "Submit"
+      select-tags: 'Select tags:'
+      latitude: "Latitude:"
+      longitude: "Longitude:"
+      address: "Address:"
       create: "Create secret" 
     edit: 
       title: "Edit"
@@ -65,6 +81,28 @@ en:
       title: "New"
       new: "New secret"
       create: "Create secret"
+    index:
+      no-description: "No description available."
+      created-by: "Created-by: "
+      created-on: "Created-on: "
+      first-secret: "No secrets available yet. Be the first to add one!"
+    show:
+      confirm-destroy: "Are you sure you want to destroy this?"
+      comments: "Comments: "
+      posted-on: "Posted on "
+      confirm-delete: "Are you sure you want to delete this comment?"
+      no-comments: "No comments yet. Be the first to comment!"
+      add-comment: "Add a New Comment"
+      your-comment: "Your Comment: "
+      post-comment: "Post comment"
+      edited: " (edited)"
+      edit: "Edit"
+      delete: "Delete"
+      at: "at %I:%M %p"
+    secret:
+      no-image: "No image available."
+      tags: "Tags"
+      no-tags: "No tags available."
 
   adventures:
     back-link: "Back to adventures"

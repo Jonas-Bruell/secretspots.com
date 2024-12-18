@@ -12,6 +12,15 @@ class SecretTagsController < ApplicationController
   end
 
 
+
+    def show
+      @secret_tag = SecretTag.find(params[:id])
+      @filtered_secrets = Secret.where(tag: @secret_tag.name) # Example logic
+    end
+
+
+
+
   def create
     @secret_tag = SecretTag.new(secret_tag_params)
     if @secret_tag.save

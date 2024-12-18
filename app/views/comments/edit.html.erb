@@ -8,11 +8,11 @@
   <div class="edit-comment-form">
     <%= form_with model: [@secret, @comment], local: true do |form| %>
       <div class="edit-comment-form-group">
-        <%= form.label :content, 'Your Comment', class: 'edit-comment-form-label' %>
+        <%= form.label :content, t('.your-comment', class: 'edit-comment-form-label') %>
         <%= form.text_area :content, rows: 5, class: 'edit-comment-form-textarea' %>
       </div>
       <div class="edit-comment-form-actions">
-        <%= form.submit 'Update Comment', class: 'btn btn-primary' %>
+        <%= form.submit t('.update-comment'), class: 'btn btn-primary' %>
       </div>
     <% end %>
   </div>
