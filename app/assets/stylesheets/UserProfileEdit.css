@@ -37,6 +37,16 @@ input {
     height:fit-content;
 }
 
+dialog{
+    border-style: none;
+    border-radius: 3%;
+    background-color: rgb(235, 235, 235);
+    padding:2%;
+    width:20%;
+    height:fit-content;
+    text-align: center;
+}
+
 @media screen and (max-width:1400px) {
     .info{
         flex-direction: column;
@@ -48,10 +58,16 @@ input {
     .properties{
         width: 100%;
     }
+    dialog{
+        width:28%;
+    }
 }
 @media screen and (max-width:540px) {
     i,em,.interactive{
         white-space: inherit;
+    }
+    dialog{
+        width:36%;
     }
 
     
@@ -59,6 +75,9 @@ input {
 @media screen and (max-width:390px) {
     input{
         width:100%;
+    }
+    dialog{
+        width:50%;
     }
 }
 
@@ -75,21 +94,32 @@ input {
 .actions{
     text-align: right;
 }
-.actions > input{
+
+dialog:-internal-dialog-in-top-layer::backdrop {
+    position: fixed;
+    inset: 0px;
+    background: rgba(0, 0, 0, 0.5);
     
-    background-color: azure;
 }
-.actions > input:hover, #cancel > form > button:hover{
+.editbutton:hover,.dialogeditbutton:hover, #cancel > form > button:hover{
     background-color: rgb(184, 182, 182)
+}
+#options{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 #cancel{
     text-align: right;
     margin-top: 1%;
 }
-#cancel > form > button{
+#cancel > form > button, .editbutton,.dialogeditbutton{
     border-style: none;
     border-radius:5px;
     background-color: azure;
+}
+.dialogeditbutton{
+    background-color: rgb(166, 168, 168);
 }
 
 #passwordEdit{

@@ -28,17 +28,21 @@ class SecretsController < ApplicationController
   end
 
   def create
-    Rails.logger.debug "DEBUG: Incoming Parameters -> #{params.inspect}"
-    @secret = current_user.secrets.new(secret_params) # Assign current_user
+    @secret = current_user.secrets.new(secret_params)
+
+    if params[:secret][:tag_names]
+      params[:secret][:tag_names].each do |tag_name|
+        @secret.secret_tags.build(name: tag_name) if SecretTag::VALID_TAGS.include?(tag_name)
+      end
+    end
 
     if @secret.save
       redirect_to @secret, notice: 'Secret was successfully created.'
     else
-      Rails.logger.debug "DEBUG: Secret Errors -> #{@secret.errors.full_messages}"
-      Rails.logger.debug "DEBUG: Secret Tags -> #{params[:secret][:secret_tags_attributes]}"
       render :new
     end
   end
+
 
 
   def edit
@@ -68,9 +72,10 @@ class SecretsController < ApplicationController
       @secret = Secret.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
-    def secret_params
-      params.require(:secret).permit(:name, :description, :latitude, :longitude, :address, :image,
-                                     secret_tags_attributes: [:id, :name, :_destroy])
-    end
+
+  private
+
+  def secret_params
+    params.require(:secret).permit(:name, :description, :image, :latitude, :longitude, :address)
+  end
 end

@@ -1,4 +1,3 @@
-
 <%= stylesheet_link_tag "UserProfileEdit" %>
 <script >
   function checkpassword(){
@@ -18,6 +17,16 @@
   <%= render "devise/shared/error_messages", resource: resource %>
   <div class="attributes">
     <div class = "properties">
+      <div class="field">
+        <div class="interactive">
+          <%= f.label :"Username:" %>
+          <% if @account_params then %>
+            <%= f.text_field :username, autofocus: true, value: @account_params[:username] %>
+          <%else%>
+            <%= f.text_field :username, autofocus: true, value: @user.username %>
+          <%end%>  
+        </div>
+      </div>
       <div class="field">
         <div class="interactive">
           <%= f.label :"email:" %>
@@ -64,7 +73,9 @@
       </div>
           <div id ="prof_pic">
         <label for="user_profile_picture">
-          <% if current_user.profile_picture.attached? %>
+          <% if @account_params then %>
+            <%= image_tag(@account_params[:profile_picture], id:"editProfPicImg") %>
+          <% elsif current_user.profile_picture.attached? %>
             <%= image_tag(current_user.profile_picture, id:"editProfPicImg") %>
           <% else %>
             <%= image_tag("/assets/empty-profile-picture.png", id:"editProfPicImg") %>
@@ -75,21 +86,29 @@
       </div>
   </div>
   <div class="actions">
-    <%= f.submit "Update profile", disabled:"disabled",id:"submit" %>
+    <button type="button" class="editbutton" onclick="dialog.showModal()" disabled="disabled" id="submit">Update profile</button>
   </div>
+<dialog id="EditConfirmation">
+  <strong>Are you sure?</strong> <br><br>
+  <div id="options">
+  <button type="button" class="dialogeditbutton" onclick="dialog.close()">Cancel</button>
+  <%= f.submit "Confirm",class:"dialogeditbutton" %>
+  </div>
+</dialog>
 <% end %>
+
 <script>
   const user_profile_picture = document.getElementById('user_profile_picture')
+  const dialog = document.getElementById('EditConfirmation')
   user_profile_picture.addEventListener("change", () => {
       if (user_profile_picture.files.length == 1) {
-      imgupdate(user_profile_picture.files[0]);
+      document.getElementById('editProfPicImg').src = URL.createObjectURL(user_profile_picture.files[0])
     }
   }
 
   )
-  function imgupdate(image){
-    document.getElementById('editProfPicImg').src = URL.createObjectURL(image)
-  }
+
+
 </script>
 <div id="cancel"> <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
 

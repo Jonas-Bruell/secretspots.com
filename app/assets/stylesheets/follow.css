@@ -1,0 +1,34 @@
+p{
+    text-align: center;
+}
+
+#return > button{
+    text-decoration: none;
+    color:black;
+    background-color: rgb(163, 163, 163);
+    padding: 0.5%;
+    padding-left: 2%;
+    padding-right: 2%;
+    border-radius: 10px;
+    border-style: none;
+}
+
+#return > button:hover{
+    background-color: rgb(134, 134, 134);
+}
+
+.user{
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(153, 152, 152);
+    padding: 1%;
+    border-radius: 10px;
+}
+img{
+    border-radius: 50%;
+    height: 58px;
+}
+#name{
+    margin-left: 2%;
+    align-self: center;
+}
