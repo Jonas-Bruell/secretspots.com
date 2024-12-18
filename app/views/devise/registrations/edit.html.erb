@@ -99,11 +99,11 @@
 <% end %>
 
 <script>
-  const user_profile_picture = document.getElementById('user_profile_picture')
+  const picture = document.getElementById('user_profile_picture')
   const dialog = document.getElementById('EditConfirmation')
-  user_profile_picture.addEventListener("change", () => {
-      if (user_profile_picture.files.length == 1) {
-      document.getElementById('editProfPicImg').src = URL.createObjectURL(user_profile_picture.files[0])
+  picture.addEventListener("change", () => {
+      if (picture.files.length == 1) {
+      document.getElementById('editProfPicImg').src = URL.createObjectURL(picture.files[0])
     }
   }
 
