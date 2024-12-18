@@ -124,7 +124,7 @@
 
       const hasNoTags = tags.length === 0;
       const matchesTag = selectedTags.length === 0 || 
-        (hasNoTags && selectedTags.includes("Not-tagged")) || 
+        selectedTags.includes("Not-tagged") || 
         tags.some(tag => selectedTags.includes(tag));
 
       if (matchesTag && withinRadius) {
