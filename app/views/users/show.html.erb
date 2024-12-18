@@ -10,12 +10,9 @@
             <%= @user.username%>
           </div>
       </div>
-      <div class="property">
-          <label>Email:</label>
-          <div class = "field">
-              <%= @user.email%>
-          </div>
-      </div>
+      <% if user_signed_in? && @user == current_user %>
+        <%= render "mail"%>
+      <%end%>  
       <div class="property">
           <label >Number of secrets found:</label>
           <div class="field_number"><%= @user.secrets.count %></div>
