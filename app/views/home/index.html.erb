@@ -126,7 +126,7 @@
       const matchesTag = selectedTags.length === 0 || 
         selectedTags.includes("Not-tagged") || 
         tags.some(tag => selectedTags.includes(tag));
-
+      
       if (matchesTag && withinRadius) {
         marker.setMap(mapHome); 
       } else {
