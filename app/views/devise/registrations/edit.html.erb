@@ -73,7 +73,7 @@
       </div>
           <div id ="prof_pic">
         <label for="user_profile_picture">
-          <% if @account_params then %>
+          <% if @account_params && @account_params[:profile_picture] then %>
             <%= image_tag(@account_params[:profile_picture], id:"editProfPicImg") %>
           <% elsif current_user.profile_picture.attached? %>
             <%= image_tag(current_user.profile_picture, id:"editProfPicImg") %>
@@ -88,7 +88,7 @@
   <div class="actions">
     <button type="button" class="editbutton" onclick="dialog.showModal()" disabled="disabled" id="submit">Update profile</button>
   </div>
-<dialog id="EditConfirmation">
+<dialog id="EditConfirmation" >
   <strong>Are you sure?</strong> <br><br>
   <div id="options">
   <button type="button" class="dialogeditbutton" onclick="dialog.close()">Cancel</button>
@@ -98,15 +98,20 @@
 <% end %>
 
 <script>
-  const picture = document.getElementById('user_profile_picture')
-  const dialog = document.getElementById('EditConfirmation')
-  picture.addEventListener("change", () => {
+  if (document.getElementById('user_profile_picture')){
+    const picture = document.getElementById('user_profile_picture')
+    picture.addEventListener("change", () => {
       if (picture.files.length == 1) {
       document.getElementById('editProfPicImg').src = URL.createObjectURL(picture.files[0])
     }
   }
-
   )
+  }
+  
+  var dialog = document.getElementById('EditConfirmation')
+  
+
+  
 
 
 </script>
