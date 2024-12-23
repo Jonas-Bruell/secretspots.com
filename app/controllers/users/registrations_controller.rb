@@ -74,9 +74,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
 
-  def edit
-    super
-  end
+  # def edit
+  #   super
+  # end
   def view
     puts current_user.secrets.count
   end

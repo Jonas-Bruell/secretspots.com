@@ -49,15 +49,6 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_17_214925) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "adventures", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.string "name"
-    t.text "body"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_adventures_on_user_id"
-  end
-
   create_table "comments", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "secret_id", null: false
@@ -65,22 +56,8 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_17_214925) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "edited", default: false
-    t.integer "cached_votes_up"
-    t.integer "cached_votes_down"
     t.index ["secret_id"], name: "index_comments_on_secret_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
-  end
-
-  create_table "friends", force: :cascade do |t|
-    t.integer "follower_id"
-    t.integer "followee_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "profiles", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "relationships", force: :cascade do |t|
@@ -104,47 +81,32 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_17_214925) do
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "address"
     t.float "latitude"
     t.float "longitude"
     t.text "description"
+    t.string "address"
     t.index ["user_id"], name: "index_secrets_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.string "full_name"
+    t.string "uid"
+    t.string "avatar_url"
+    t.string "provider"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "provider"
-    t.string "uid"
-    t.string "username", default: "", null: false
+    t.string "username"
     t.index ["email"], name: "index_users_on_email"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token"
   end
 
-  create_table "votes", force: :cascade do |t|
-    t.string "votable_type"
-    t.integer "votable_id"
-    t.string "voter_type"
-    t.integer "voter_id"
-    t.boolean "vote_flag"
-    t.string "vote_scope"
-    t.integer "vote_weight"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope"
-    t.index ["votable_type", "votable_id"], name: "index_votes_on_votable"
-    t.index ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope"
-    t.index ["voter_type", "voter_id"], name: "index_votes_on_voter"
-  end
-
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "adventures", "users"
   add_foreign_key "comments", "secrets"
   add_foreign_key "comments", "users"
   add_foreign_key "secret_tags", "secrets"
