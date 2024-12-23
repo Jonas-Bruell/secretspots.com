@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
 
-  devise_for :users, only: :omnoauth_callbacks, controllers: {
+  devise_for :users, only: :omniauth_callbacks, controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
