@@ -14,8 +14,8 @@ class FlickrServices
   BASE_URL = "https://api.flickr.com/services/rest/"
 
   def initialize # fix env
-    @api_key = Rails.application.credentials.dig('FLICKR_API_KEY')
-    @secret_key = Rails.application.credentials.dig('FLICKR_SECRET_KEY')
+    @api_key = "e2f396329e683d393330d1117a898bcc" # Rails.application.credentials.dig('FLICKR_API_KEY')
+    @secret_key = "db2593e4b2524b2e" # Rails.application.credentials.dig('FLICKR_SECRET_KEY')
   end
 
   def search_photos(tags, lat, lon, radius = 5, per_page = 5)

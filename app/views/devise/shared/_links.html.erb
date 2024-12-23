@@ -131,12 +131,12 @@
 
 <%- if devise_mapping.omniauthable? %>
   <%- resource_class.omniauth_providers.each do |provider| %>
-    <%= form_for "Sign_up", 
-      url: omniauth_authorize_path(resource_name, provider),
+    <!--<%= form_for "Sign_up", 
+      # url: omniauth_authorize_path(resource_name, provider),
       method: :post,
       data: { turbo: "false" } do |f|   
     %>
-      <!-- https://developers.google.com/identity/branding-guidelines -->
+     https://developers.google.com/identity/branding-guidelines 
       <button class="gsi-material-button">
         <div class="gsi-material-button-state"></div>
         <div class="gsi-material-button-content-wrapper">
@@ -152,7 +152,7 @@
           <span class="gsi-material-button-contents">Sign up with Google</span>
           <span style="display: none;">Sign up with Google</span>
         </div>
-      </button>
+      </button>-->
     <% end %>
   <% end %>
 <% end %>
